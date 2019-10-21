@@ -14,7 +14,7 @@ import MovieData from "./MovieData";
 function App() {
   return (
       <div className="App">
-        <SWMovies/>
+        {/*<SWMovies/>*/}
         {/*<Clicker />*/}
         <header className="App-header">
           <Form />
