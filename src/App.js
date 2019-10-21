@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
+
 import './App.css';
+import Form from "./Form";
+import Search from "./Search";
+import MovieResultCard from "./MovieResultCard";
+import FetchMovieData from "./fetchOMDB";
+import CounterClass from "./HooksEx";
+import CounterHooks from "./HooksFunction";
+import Clicker from "./Clicker";
+import SWMovies from "./Swapi";
+import MovieData from "./MovieData";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <div className="App">
+        <SWMovies/>
+        {/*<Clicker />*/}
+        <header className="App-header">
+          <Form />
+
+        </header>
+        {/*<Search />*/}
+      </div>
+  )
 }
 
 export default App;

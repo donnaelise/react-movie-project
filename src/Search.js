@@ -1,9 +1,5 @@
 import React, { Component } from 'react'
-import axios from 'axios'
-import Suggestions from 'components/Suggestions'
-
-const { API_KEY } = process.env
-const API_URL = 'http://api.musicgraph.com/api/v2/artist/suggest'
+let resultTitle
 
 class Search extends Component {
     state = {
@@ -12,12 +8,11 @@ class Search extends Component {
     }
 
     getInfo = () => {
-
-        axios.get(`http://www.omdbapi.com/?t=${this.state.query}&apikey=79b388a7`)
-            .then(({ data }) => {
-                this.setState({
-                    results: data.data
-                })
+        fetch(`http://www.omdbapi.com/?t=${this.state.query}&apikey=79b388a7`)
+            .then(response => response.json())
+            .then(function(data){
+                console.log(data.Title);
+                resultTitle=data.Title
             })
     }
 
@@ -42,7 +37,7 @@ class Search extends Component {
                     ref={input => this.search = input}
                     onChange={this.handleInputChange}
                 />
-                <Suggestions results={this.state.results} />
+                <div>{resultTitle}</div>
             </form>
         )
     }
