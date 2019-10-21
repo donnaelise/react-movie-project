@@ -15,22 +15,21 @@ class Form extends React.Component{
         this.handleChange = this.handleChange.bind(this);
     }
 
-
     render(){
-        console.log('from render function: ', this.state.result)
+        // console.log('from render function: ', this.state.result)
         return(
             <form>
                 <input type={'text'} placeholder={'search'} onChange={this.handleChange}/>
-               <MovieData/>
+               <MovieData query={this.state.query}/>
             </form>
         )
     }
 
     handleChange(event){
-        this.setState({query: event.target.value, isLoading: false},
+        this.setState({query: event.target.value},
             function(){
-                console.log('loading....');
-                console.log("typed: ", this.state.query);
+                // console.log('loading....');
+                // console.log("typed: ", this.state.query);
                 fetch(`http://www.omdbapi.com/?t=${this.state.query}&apikey=79b388a7`)
                     .then(response => response.json())
                     .then(function(data){

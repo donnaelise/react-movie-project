@@ -12,33 +12,40 @@ function MovieData() {
     "Bad Grandpa",
     "El Camino: A Breaking Bad Movie",]
   const [result, setResult] = useState('');
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null)
   const [number, setNumber] = useState(1)
+  const [query, setQuery] = useState(1)
 
 
   useEffect(()=>{
-        fetch(`http://www.omdbapi.com/?t=${movieList[number]}&apikey=79b388a7`)
+        fetch(`http://www.omdbapi.com/?t=${query}&apikey=79b388a7`)
             .then(response => response.json())
-      }, [number]
+            .then(data=>setResult(data))
+      }, [query]
   )
 
+  function Card(props){
+    const {query = 'joker'} = props;
+    console.log(props.query)
+    console.log(query)
+    return <h2>{query} </h2>
+  }
 
   function getRandomNum(){
     setNumber(Math.floor(Math.random()*movieList.length))
   }
 
-
-
+console.log(query)
   return(
+
       <React.Fragment>
-        <button onClick={function(event){
-          event.preventDefault();
-          getRandomNum();
-          console.log(number, movieList[number])
-        }}> CLICK ME TO FETCH </button>
+        <input type={'text'} placeholder={'dataaaaaa'} height={160} onChange={e=>setQuery(e.target.value)}/>
+        {/*<button onClick={function(event){*/}
+        {/*  event.preventDefault();*/}
+        {/*  getRandomNum();*/}
+        {/*  console.log(number, movieList[number])*/}
+        {/*}}> CLICK ME TO FETCH </button>*/}
         <hr/>
-        <p>Title: {movieList[number]}</p>
+        <p>Title: {result.title}</p>
         <p>Year: {result.Year}</p>
         <img src={result.Poster} />
         <hr/>
