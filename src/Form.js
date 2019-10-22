@@ -4,23 +4,24 @@ import MovieSearchComponent from "./MovieSearchComponent";
 
 function Form (){
 
-    const[query, setQuery] = useState('');
+  const[query, setQuery] = useState('');
 
-    useEffect(()=>{
+  useEffect(()=>{
 
-    }
-    );
-    function handleChange(e){
-        setQuery(e.target.value)
-    }
-    return (
+      }
+  );
+  function handleChange(e){
+    setQuery(e.target.value)
+  }
+  return (<React.Fragment>
         <form>
-            <input type={'text'} placeholder={'search'} onChange={e=>handleChange(e)}/>
-            <hr/>
-          <MovieData searchquery={query}/>
+          <input type={'text'} placeholder={'search'} onChange={e=>handleChange(e)}/>
+          <hr/>
           <MovieSearchComponent searchquery={query}/>
         </form>
-    )
+        <MovieData searchquery={query}/>
+      </React.Fragment>
+  )
 }
 
 export default Form;

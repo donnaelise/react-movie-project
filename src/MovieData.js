@@ -24,7 +24,6 @@ function MovieData(props) {
           <p>Year: {result.Year}</p>
           <img src={result.Poster} alt={'no poster available'}/>
         </div> : ''}
-        <hr/>
       </React.Fragment>
   )
 }

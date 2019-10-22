@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 let ResultArr = [];
+let Result1=[];
 
 function MovieSearchComponent(props) {
   const [result, setResult] = useState([]);
@@ -19,17 +20,10 @@ function MovieSearchComponent(props) {
       if (result.length > 0) {
         for (let i = 0; i < result.length; i++) {
           console.log(result[i].Title);
-          ResultArr.push(<li>
-            <img src={result[i].Poster} width={'30px'} height={'auto'} alt={'no poster available'} className={'listPoster'}/><div className={'listInfo'}>
-            Title: {result[i].Title}
-            <br/> Year: {result[i].Year}
-          </div>
-          </li>)
+          ResultArr.push(result[i]);
         }
       }
     }
-    ResultArr.map(e=>console.log([e][0]));
-    return <ul className={'listResults'}>{ResultArr}</ul>
   }
 
   return(
@@ -41,12 +35,29 @@ function MovieSearchComponent(props) {
           Find a list
         </button>
         {displayData()}
-
-
         <hr/>
+        <ul className={'listResults'}>
+          {ResultArr.map(result=>
+              <li
+                  key={result.imdbID}
+                  className={'listItem'}
+                  id={'listItem_'+result.imdbID}
+                  onMouseEnter={()=>console.log(result.Title)}>
+                <img
+                    className={'listPoster'}
+                    src={result.Poster}
+                    alt={'no poster available'}
+                    width={'30px'}
+                    height={'auto'}
+                />
+                <div className={'listInfo'}>
+                Title: {result.Title} <br/>
+                Year: {result.Year}
+                </div>
+              </li>)}
+        </ul>
       </React.Fragment>
   )
-
 }
 export default MovieSearchComponent;
 
