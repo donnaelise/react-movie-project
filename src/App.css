@@ -20,3 +20,26 @@
 .App-link {
   color: #09d3ac;
 }
+
+.listResults{
+  list-style: none;
+  text-align: left;
+  font-size:.8rem;
+  padding:0;
+}
+.listResults li{
+  display:flex;
+  flex-wrap: wrap;
+  margin:10px;
+  border:.5px solid whitesmoke;
+  padding:10px;
+  width:400px;
+}
+
+.listPoster {
+  width:50px;
+  margin-right:15px;
+}
+.listInfo {
+  max-width:80%;
+}

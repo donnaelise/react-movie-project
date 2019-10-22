@@ -13,20 +13,16 @@ function MovieData(props) {
       }, [query]
   );
 
-  function Card(props){
-    const {query = 'joker'} = props;
-    return <h2>{query} </h2>
-  }
 
   return(
       <React.Fragment>
-        <button onClick={function (event) {
+        <button  onClick={function (event) {
           event.preventDefault();
           setQuery(props.searchquery)}}>Find a movie </button>
         {result.Title ? <div>
           <p>Title: {result.Title}</p>
           <p>Year: {result.Year}</p>
-          <img src={result.Poster} alt={'movie poster'}/>
+          <img src={result.Poster} alt={'no poster available'}/>
         </div> : ''}
         <hr/>
       </React.Fragment>
