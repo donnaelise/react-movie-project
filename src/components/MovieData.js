@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 
 function MovieData(props) {
   const [result, setResult] = useState('');
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = useState('');
 
   useEffect(()=>{
         console.log(props.searchquery);
@@ -12,7 +12,6 @@ function MovieData(props) {
             .then(data=>setResult(data))
       }, [query]
   );
-
 
   return(
       <React.Fragment>

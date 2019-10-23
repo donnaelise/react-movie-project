@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './App.css';
-import Form from "./Form";
+import Form from "./components/Form/Form";
 
 function App() {
   return (
@@ -9,7 +9,6 @@ function App() {
         <header className="App-header">
           <Form />
         </header>
-
       </div>
   )
 }

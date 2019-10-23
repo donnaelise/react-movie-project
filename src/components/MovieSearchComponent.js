@@ -1,17 +1,17 @@
 import React, {useState, useEffect} from 'react';
 let ResultArr = [];
-let Result1=[];
 
 function MovieSearchComponent(props) {
   const [result, setResult] = useState([]);
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = useState('props.searchquery');
 
   useEffect(()=>{
+        props.selection('');
         fetch(`http://www.omdbapi.com/?s=${props.searchquery}&apikey=79b388a7`)
             .then(response => response.json())
             .then(data=>data.Search)
             .then(result=>setResult(result))
-      }, [query]
+      }, [query, props.searchquery]
   );
 
   function displayData() {
@@ -19,40 +19,27 @@ function MovieSearchComponent(props) {
     if (result) {
       if (result.length > 0) {
         for (let i = 0; i < result.length; i++) {
-          console.log(result[i].Title);
           ResultArr.push(result[i]);
         }
       }
     }
   }
 
+  function handleClick(val){
+    props.selection(val.imdbID)
+  }
+
   return(
       <React.Fragment>
-        <button onClick={function (event) {
-          event.preventDefault();
-          setQuery(props.searchquery)
-        }}>
-          Find a list
-        </button>
         {displayData()}
         <hr/>
         <ul className={'listResults'}>
           {ResultArr.map(result=>
-              <li
-                  key={result.imdbID}
-                  className={'listItem'}
-                  id={'listItem_'+result.imdbID}
-                  onMouseEnter={()=>console.log(result.Title)}>
-                <img
-                    className={'listPoster'}
-                    src={result.Poster}
-                    alt={'no poster available'}
-                    width={'30px'}
-                    height={'auto'}
-                />
+              <li key={result.imdbID} className={'listItem'} id={'listItem_'+result.imdbID} onClick={() => handleClick(result)}>
+                <img className={'listPoster'} src={result.Poster} alt={'no poster available'}/>
                 <div className={'listInfo'}>
-                Title: {result.Title} <br/>
-                Year: {result.Year}
+                  Title: {result.Title} <br/>
+                  Year: {result.Year}
                 </div>
               </li>)}
         </ul>
