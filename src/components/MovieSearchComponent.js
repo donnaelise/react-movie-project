@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react';
+import ResultCard from "./ResultCard";
 let ResultArr = [];
 
 function MovieSearchComponent(props) {
   const [result, setResult] = useState([]);
+  const [selection, setSelection] = useState();
   const [query, setQuery] = useState('props.searchquery');
 
   useEffect(()=>{
@@ -26,7 +28,15 @@ function MovieSearchComponent(props) {
   }
 
   function handleClick(val){
-    props.selection(val.imdbID)
+    props.selection(val.imdbID);
+  }
+
+  function handleSelection(val){
+    setSelection(val);
+  }
+
+  function createDetailCard(val){
+    return <ResultCard result={val} onClick={() => handleClick(result)} selection = {handleSelection} currentSelection={selection}/>
   }
 
   return(
@@ -35,14 +45,15 @@ function MovieSearchComponent(props) {
         <hr/>
         <ul className={'listResults'}>
           {ResultArr.map(result=>
-              <li key={result.imdbID} className={'listItem'} id={'listItem_'+result.imdbID} onClick={() => handleClick(result)}>
-                <img className={'listPoster'} src={result.Poster} alt={'no poster available'}/>
-                <div className={'listInfo'}>
-                  Title: {result.Title} <br/>
-                  Year: {result.Year}
-                </div>
-              </li>)}
+              <div key={result.imdbID} id={'listItem_'+result.imdbID} onClick={() => handleClick(result)}>
+                  {createDetailCard(result)}
+              </div>
+          )
+          }
+
         </ul>
+
+
       </React.Fragment>
   )
 }

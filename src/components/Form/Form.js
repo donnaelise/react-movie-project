@@ -11,21 +11,32 @@ function Form (){
   function handleChange(e){
     setQuery(e.target.value)
   }
-  console.log('loaded');
+  // console.log('loaded');
 
   function handleSelection(val){
     setSelection(val)
-  }
 
-  function handleClearSelection(){
-    setSelection('')
   }
+  // function handleClearSelection(){
+  //   setSelection('')
+  //   setQuery('')
+  //   console.log("THIS IS HANDLECLEARSELECTION")
+  // }
 
   function handleClearSearch(e){
     e.preventDefault();
     setMovieSearch('');
     setSelection('')
+    setQuery('')
+    document.getElementById('searchForm').reset();
   }
+
+  function handleResetInput(e){
+    e.preventDefault();
+    setQuery('')
+    document.getElementById('searchForm').reset();
+  }
+
 
   function handleClick(e){
     e.preventDefault();
@@ -33,17 +44,17 @@ function Form (){
   }
 
   return (<React.Fragment>
-        <form>
-          <input type={'text'} placeholder={'search'} onChange={e=>handleChange(e)}/>
-          <button onClick={handleClick}>Search</button>
-
+        <form id={'searchForm'}>
+          <div className={'searchInput'}> <input class={'searchFormInput'}type={'text'} placeholder={'search'} onChange={e=>handleChange(e)}/>
+            <div className={'resetInput'} onClick={handleResetInput}>𝗫</div>
+          </div>
+            <button onClick={handleClick}>Search</button>
+            <button onClick={handleClearSearch}>start over</button>
 
           {movieSearch ?
               <div>Search for: {movieSearch}
-          <button onClick={handleClearSearch}>delete</button>
 
-            {selection? <MovieSelected id={selection} close={handleClearSelection}/> : ''}
-            <MovieSearchComponent searchquery={movieSearch} selection={handleSelection}/>
+                <MovieSearchComponent searchquery={movieSearch} selection={handleSelection}/>
               </div> : ''}
 
 

@@ -22,3 +22,16 @@
   color: #09d3ac;
 }
 
+
+.searchInput {
+  background-color: white;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.resetInput {
+  cursor:pointer;
+  color: #282c34;
+  padding:0 5px;
+  /*width:30px;*/
+}
