@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Trailer from "../Trailer";
+import Reviews from "../Reviews";
 
 function ResultDetail (props) {
   const id=props.resultId;
@@ -19,7 +20,6 @@ function ResultDetail (props) {
 
             <div>
               <hr/>
-              <p>IMDB ID is : {result.imdbID} !!!</p>
               <h3 className={'movieSelected-title'}>{result.Title}</h3>
               <div className={'movieSelected-info'}>
                 {result.Poster ? <img alt={'no img'} width={'50%'} src={result.Poster} /> : ''}
@@ -33,6 +33,7 @@ function ResultDetail (props) {
               <dl>
                 <dt>Plot:</dt><dd> {result.Plot}</dd>
               </dl>
+              <Reviews title={result.Title} />
               <Trailer imdbID={result.imdbID}/>
             </div>
 

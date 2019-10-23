@@ -1,9 +1,4 @@
-input {
-  font-size:1rem;
-  padding:5px 10px;
-  border-radius:2px;
-  border-style: none;
-}
+
 button{
   -webkit-appearance: none;
   background-color:white;
@@ -11,6 +6,38 @@ button{
   padding:5px 15px;
   border-radius:3px;
   margin:5px;
+}
+
+
+#searchForm{
+  width:80%;
+  max-width:800px;
+}
+
+.searchInput{
+  border-radius: 5px;
+  background-color: white;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+
+  input.searchFormInput{
+    font-size:1rem;
+    padding:5px 10px;
+    border-style: none;
+    margin-left:5px;
+    &:focus{
+      outline: none;
+      &::placeholder{
+        color:transparent
+      }
+    }
+  }
+  .resetInput{
+    cursor:pointer;
+    color: #282c34;
+    padding:0 10px;
+  }
 }
 
 .listResults{
@@ -76,6 +103,18 @@ button{
       text-align: left;
       font-weight: bold;
     }
+  }
+}
+
+.resultReview {
+  a{
+    color:white;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .reviewHeadline {
+    padding:10px;
+    border:.5px solid whitesmoke;
   }
 }
 

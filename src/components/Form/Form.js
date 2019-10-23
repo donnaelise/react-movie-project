@@ -33,7 +33,7 @@ function Form (){
 
   function handleResetInput(e){
     e.preventDefault();
-    setQuery('')
+    setQuery('');
     document.getElementById('searchForm').reset();
   }
 
@@ -45,20 +45,17 @@ function Form (){
 
   return (<React.Fragment>
         <form id={'searchForm'}>
-          <div className={'searchInput'}> <input class={'searchFormInput'}type={'text'} placeholder={'search'} onChange={e=>handleChange(e)}/>
-            <div className={'resetInput'} onClick={handleResetInput}>𝗫</div>
+          <div className={'searchInput'}>
+            <input class={'searchFormInput'} type={'text'} placeholder={'search'} onFocus={"this.placeholder = ''"} onChange={e=>handleChange(e)}/>
+            <div className={'resetInput'} onClick={handleResetInput}> 𝗫 </div>
           </div>
-            <button onClick={handleClick}>Search</button>
-            <button onClick={handleClearSearch}>start over</button>
-
-          {movieSearch ?
-              <div>Search for: {movieSearch}
-
-                <MovieSearchComponent searchquery={movieSearch} selection={handleSelection}/>
-              </div> : ''}
-
-
+          <button onClick={handleClick}>Search</button>
+          <button onClick={handleClearSearch}>start over</button>
         </form>
+        {movieSearch ?
+            <div>Search for: {movieSearch}
+              <MovieSearchComponent searchquery={movieSearch} selection={handleSelection}/>
+            </div> : ''}
       </React.Fragment>
   )
 }
