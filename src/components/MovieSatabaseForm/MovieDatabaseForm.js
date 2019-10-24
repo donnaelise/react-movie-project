@@ -1,27 +1,18 @@
 import React, {useState, useEffect} from 'react';
-import MovieSearchComponent from "../MovieSearchComponent";
-import MovieSelected from "../MovieSelected";
-import './form.scss';
+import MovieSearchResults from "../MovieSearchResults";
+import './MovieDatabaseForm.scss';
 
-function Form (){
-  const[query, setQuery] = useState('hello');
-  const[selection, setSelection] = useState('');
+function MovieDatabaseForm (){
+  const[query, setQuery] = useState('joker');
   const[movieSearch, setMovieSearch] = useState();
 
   function handleChange(e){
     setQuery(e.target.value)
   }
-  // console.log('loaded');
-
-  function handleSelection(val){
-    setSelection(val)
-
-  }
 
   function handleClearSearch(e){
     e.preventDefault();
     setMovieSearch('');
-    setSelection('')
     setQuery('')
     document.getElementById('searchForm').reset();
   }
@@ -32,7 +23,6 @@ function Form (){
     document.getElementById('searchForm').reset();
     document.getElementById('searchFormInput').focus();
   }
-
 
   function handleClick(e){
     e.preventDefault();
@@ -54,10 +44,13 @@ function Form (){
         </form>
         {movieSearch ?
             <div>Search for: {movieSearch}
-              <MovieSearchComponent searchquery={movieSearch} selection={handleSelection}/>
+              <MovieSearchResults
+                  searchquery={movieSearch}
+                  // selection={(val)=>console.log(val)}
+              />
             </div> : ''}
       </React.Fragment>
   )
 }
 
-export default Form;
+export default MovieDatabaseForm;

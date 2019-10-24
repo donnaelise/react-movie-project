@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import Trailer from "../Trailer";
-import Reviews from "../Reviews";
+import Trailer from "./Trailer";
+import Reviews from "./Reviews";
 
 function ResultDetail (props) {
   const id = props.resultId;
@@ -14,14 +14,18 @@ function ResultDetail (props) {
       }, [props.resultId]
   );
 
+  function ImgError(){
+    document.getElementById('ResultDetailImage').style.display = "none";
+  }
+
   return(
       <React.Fragment>
         {result?
-            <div>
+            <div id={`details_${result.imdbID}`}>
               <hr/>
-              <h3 className={'movieSelected-title'}>{result.Title}</h3>
+              {/*<h3 className={'movieSelected-title'}>{result.Title}</h3>*/}
               <div className={'movieSelected-info'}>
-                {result.Poster ? <img alt={'no img'} width={'50%'} src={result.Poster} /> : ''}
+                {result.Poster ? <img id={'ResultDetailImage'} alt={'no img'} width={'50%'} src={result.Poster} onError={ImgError}/> : ''}
                 <dl>
                   <dt>Year:</dt><dd> {result.Year}</dd>
                   <dt>Genre:</dt><dd> {result.Genre}</dd>
@@ -33,9 +37,8 @@ function ResultDetail (props) {
                 <dt>Plot:</dt><dd> {result.Plot}</dd>
               </dl>
               <Reviews title={result.Title} />
-              <Trailer imdbID={result.imdbID}/>
+              {result.Type === 'movie' ? <Trailer imdbID={result.imdbID}/> : ''}
             </div>
-
             :''}
 
       </React.Fragment>
