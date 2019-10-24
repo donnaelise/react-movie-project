@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import ResultDetail from "./Form/ResultDetail";
-import Trailer from "./Trailer";
+// import Trailer from "./Trailer";
 
 function ResultCard (props) {
-  const result=props.result
+  const result=props.result;
   const [selected, setSelected] = useState(false)
 
 

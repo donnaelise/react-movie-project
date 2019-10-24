@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 
 function MovieSelected(props) {
-  const [imdbID, setImdbID] = useState(props.id);
+  // const [imdbID, setImdbID] = useState(props.id);
   const [result, setResult] = useState([]);
 
   useEffect(()=>{

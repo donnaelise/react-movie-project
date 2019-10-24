@@ -17,11 +17,6 @@ function Form (){
     setSelection(val)
 
   }
-  // function handleClearSelection(){
-  //   setSelection('')
-  //   setQuery('')
-  //   console.log("THIS IS HANDLECLEARSELECTION")
-  // }
 
   function handleClearSearch(e){
     e.preventDefault();
@@ -35,6 +30,7 @@ function Form (){
     e.preventDefault();
     setQuery('');
     document.getElementById('searchForm').reset();
+    document.getElementById('searchFormInput').focus();
   }
 
 
@@ -43,10 +39,14 @@ function Form (){
     setMovieSearch(query)
   }
 
+  function onFocus(event){
+    event.placeholder = '';
+  }
+
   return (<React.Fragment>
         <form id={'searchForm'}>
           <div className={'searchInput'}>
-            <input class={'searchFormInput'} type={'text'} placeholder={'search'} onFocus={"this.placeholder = ''"} onChange={e=>handleChange(e)}/>
+            <input id={'searchFormInput'} className={'searchFormInput'} type={'text'} placeholder={'search'} onFocus={onFocus} onChange={e=>handleChange(e)}/>
             <div className={'resetInput'} onClick={handleResetInput}> 𝗫 </div>
           </div>
           <button onClick={handleClick}>Search</button>

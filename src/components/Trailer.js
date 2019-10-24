@@ -1,28 +1,22 @@
 import React, {useState, useEffect} from 'react';
 
 function Trailer (props) {
-  const url=props.result;
   const id=props.imdbID;
-  // const [result, setResult] = useState()
-  // const [MDBid, setMDBid] = useState()
+  const MDBid = props.imdbId
   const [youTubeID, setYouTubeID] = useState()
 
   useEffect(()=>{
-    console.log(props)
-    // fetch(`https://api.themoviedb.org/3/find/${id}?api_key=b93d00f59612e64271c924d7c3cf8264&language=en-US&external_source=imdb_id`)
     fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=b93d00f59612e64271c924d7c3cf8264&language=en-US`)
         .then(response => response.json())
         .then(function(data){
           if(data.results && data.results.length>0){
             if(data.results[0].key){
-              console.log(data.results[0].key);
               setYouTubeID(data.results[0].key)
             }
           }
         })
-        .then(()=>console.log(youTubeID))
-  }, [props.imdbId]
-);
+        .catch(()=>console.log('fetch failed'))
+  }, [MDBid]);
 
 return(
     <React.Fragment>
@@ -36,7 +30,7 @@ return(
             height: 0
           }}
       >
-        <iframe onload={console.log('LOADED')}
+        <iframe onLoad={console.log('youtube video was loaded')}
             style={{
               position: "absolute",
               top: 0,

@@ -3,21 +3,20 @@ import Trailer from "../Trailer";
 import Reviews from "../Reviews";
 
 function ResultDetail (props) {
-  const id=props.resultId;
-  const [result, setResult] = useState()
+  const id = props.resultId;
+  const [result, setResult] = useState();
 
   useEffect(()=>{
         fetch(`http://www.omdbapi.com/?i=${id}&apikey=79b388a7`)
             .then(response => response.json())
             .then(data=>setResult(data))
+            .catch(()=>console.log('fetch failed'))
       }, [props.resultId]
   );
 
   return(
       <React.Fragment>
-
         {result?
-
             <div>
               <hr/>
               <h3 className={'movieSelected-title'}>{result.Title}</h3>

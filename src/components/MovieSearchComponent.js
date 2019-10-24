@@ -50,7 +50,6 @@ function MovieSearchComponent(props) {
               </div>
           )
           }
-
         </ul>
 
 
