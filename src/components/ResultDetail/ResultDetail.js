@@ -24,7 +24,6 @@ function ResultDetail (props) {
         {result?
             <div className={'ResultDetailContainer'} id={`details_${result.imdbID}`}>
               <hr/>
-              {/*<h3 className={'movieSelected-title'}>{result.Title}</h3>*/}
               <div className={'movieSelected-info'}>
                 {result.Poster ? <img id={'ResultDetailImage'} alt={'no img'} width={'50%'} src={result.Poster} onError={ImgError}/> : ''}
                 <dl>

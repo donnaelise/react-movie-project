@@ -10,11 +10,13 @@ button{
   background-color:$light;
   font-size:1rem;
   padding:5px 15px;
-  border-radius: 5px;
+  //border-radius: 5px;
   margin:5px;
 }
 
 #searchForm{
+  margin-top:10%;
+  margin-bottom:5%;
   width:80%;
   max-width:800px;
 }
@@ -66,9 +68,7 @@ button{
   li{
     display:flex;
     flex-wrap: wrap;
-    margin:10px 0;
-    //border-bottom:.5px solid whitesmoke;
-    padding:10px;
+    //margin:10px 0;
     box-sizing: border-box;
   }
   .listPoster {
@@ -82,7 +82,7 @@ button{
 
 .resultReview {
   a{
-    color:white;
+    color:black;
     cursor: pointer;
     text-decoration: none;
   }
@@ -92,6 +92,9 @@ button{
   }
 }
 
-.searchResultContainer{
-  max-width:50%;
+.searchResultsContainer{
+  border-radius:10px 10px 0 0;
+  color:black;
+  background-color: lightgrey;
+  padding-top:10px;
 }

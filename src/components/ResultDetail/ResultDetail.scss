@@ -18,12 +18,12 @@
   }
 
   &-info{
-
     align-items:start;
     display:flex;
     flex-direction: row;
     img{
       max-width:35%;
+      border-radius:5px;
     }
     dl{
       margin-left:10px;
@@ -44,5 +44,6 @@
 
 .ResultDetailContainer {
 //max-width:100%;
+  padding:5px;
 
 }

@@ -3,7 +3,7 @@ import MovieSearchResults from "../MovieSearchResults/MovieSearchResults";
 import './MovieSearch.scss';
 
 function MovieSearch (){
-  const[query, setQuery] = useState('');
+  const[query, setQuery] = useState('love');
   const[transitionEnded, setTransitionEnded] = useState('true');
 
   function handleChange(e){
@@ -53,7 +53,8 @@ function MovieSearch (){
           <button onClick={handleClearSearch}>start over</button>
         </form>
         {query && transitionEnded?
-            <div className={'searchResultsContainer'}>Search for: {query}
+            <div className={'searchResultsContainer'}>
+              <h3>Search for: {query}</h3>
               <MovieSearchResults
                   searchquery={query}
               />

@@ -1,9 +1,13 @@
 .listItem {
   .ResultCard--expanded{
     display:flex;
-
+    .listPoster {
+      border-radius:10px 0 0 10px;
+      width:25%;
+    }
   }
-  img{
-    width:40%;
-  }
+.ResultCardTitle--selected {
+  margin-left:5px;
 }
+}
+

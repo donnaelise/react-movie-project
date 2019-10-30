@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import ResultCard from "../ResultCard/ResultCard";
 import './MovieSearchResults.scss'
-// import '../MovieSearch/MovieSearch.scss'
 let ResultArr = [];
 
 function MovieSearchResults(props) {
@@ -39,7 +38,7 @@ function MovieSearchResults(props) {
   return(
       <React.Fragment>
         {displayData()}
-        <hr/>
+
         <ul className={'listResults'}>
           {ResultArr.map(result=>
               <div key={result.imdbID} id={'listItem_'+result.imdbID}>
