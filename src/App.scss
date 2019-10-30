@@ -1,5 +1,9 @@
+@import "_variables.scss";
+
 .App {
   text-align: center;
+  color:black;
+
 }
 
 .App-logo {
@@ -7,15 +11,18 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  //width:100%;
+  //max-width:1200px;
+  background-color: rgba(0,0,0,.5);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-
   font-size: calc(10px + 2vmin);
   color: white;
-  padding-top:20px;
+  //padding-top:20px;
+
+
 }
 
 .App-link {

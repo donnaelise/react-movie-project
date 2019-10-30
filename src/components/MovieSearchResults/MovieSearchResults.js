@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import ResultCard from "./ResultCard";
+import ResultCard from "../ResultCard/ResultCard";
+import './MovieSearchResults.scss'
+// import '../MovieSearch/MovieSearch.scss'
 let ResultArr = [];
 
 function MovieSearchResults(props) {
   const [result, setResult] = useState([]);
-  const [selection, setSelection] = useState();
+  const [selection, setSelection] = useState('');
 
   useEffect(()=>{
         fetch(`http://www.omdbapi.com/?s=${props.searchquery}&apikey=79b388a7`)

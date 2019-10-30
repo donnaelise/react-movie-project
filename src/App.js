@@ -1,13 +1,14 @@
 import React from 'react';
-
-import './App.css';
-import MovieDatabaseForm from "./components/MovieSatabaseForm/MovieDatabaseForm";
+import './App.scss';
+import MovieSearch from "./components/MovieSearch";
+import BackgroundImages from "./components/BackgroundImages";
 
 function App() {
   return (
       <div className="App">
         <header className="App-header">
-          <MovieDatabaseForm />
+          <BackgroundImages latest={'latest'}/>
+          <MovieSearch />
         </header>
       </div>
   )

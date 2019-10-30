@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import ResultDetail from "./ResultDetail";
+import ResultDetail from "../ResultDetail";
 import './ResultCard.scss';
 
 
@@ -12,7 +12,7 @@ function ResultCard (props) {
     handleSelection(val);
     if(!selected){
       const scrollPoint = document.getElementById(`listItem_${val.imdbID}`).offsetTop;
-      console.log(val.Title)
+      console.log(val.Title);
       window.scrollTo(0,scrollPoint)
     }
   }

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import Trailer from "./Trailer";
-import Reviews from "./Reviews";
+import './ResultDetail.scss'
+import Trailer from "../Trailer/index";
+import NYTimesReviews from "../NYTimesReviews";
 
 function ResultDetail (props) {
   const id = props.resultId;
@@ -21,7 +22,7 @@ function ResultDetail (props) {
   return(
       <React.Fragment>
         {result?
-            <div id={`details_${result.imdbID}`}>
+            <div className={'ResultDetailContainer'} id={`details_${result.imdbID}`}>
               <hr/>
               {/*<h3 className={'movieSelected-title'}>{result.Title}</h3>*/}
               <div className={'movieSelected-info'}>
@@ -36,7 +37,7 @@ function ResultDetail (props) {
               <dl>
                 <dt>Plot:</dt><dd> {result.Plot}</dd>
               </dl>
-              <Reviews title={result.Title} />
+              <NYTimesReviews title={result.Title} />
               {result.Type === 'movie' ? <Trailer imdbID={result.imdbID}/> : ''}
             </div>
             :''}

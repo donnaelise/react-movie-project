@@ -1,9 +1,8 @@
 import React, {useState, useEffect} from 'react';
 
-function Reviews (props) {
+function NYTimesReviews (props) {
   const title = props.title;
   const [link, setLink] = useState();
-
 
   useEffect(()=>{
         fetch(`https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=${title}&api-key=ztBm42P6gWwA3gKU2ZXTPMP9ad8WGUrH`)
@@ -35,4 +34,4 @@ function Reviews (props) {
       </React.Fragment>
   )
 }
-export default Reviews;
+export default NYTimesReviews;
