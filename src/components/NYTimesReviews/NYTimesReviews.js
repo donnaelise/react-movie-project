@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import './NYTimesReviews.scss';
 
 function NYTimesReviews (props) {
   const title = props.title;
@@ -30,6 +31,7 @@ function NYTimesReviews (props) {
                 </p>
               </a>
             </div> : ''}
+        <hr/>
         {/*<p>{linkText.suggested_link_text}</p>*/}
       </React.Fragment>
   )

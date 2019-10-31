@@ -5,13 +5,13 @@ html{
   background:grey;
 }
 button{
-  border-radius: 3px;
+  border-radius: 5px;
   -webkit-appearance: none;
-  background-color:$light;
+  background-color:white;
   font-size:1rem;
   padding:5px 15px;
-  //border-radius: 5px;
   margin:5px;
+  border-style: none;
 }
 
 #searchForm{
@@ -35,11 +35,13 @@ button{
 }
 
 .searchInput{
-  border-radius: 13px;
+  padding:5px 0;
+  border-radius: 5px;
   background-color: white;
   display:flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom:5px;
 
   input.searchFormInput{
     font-size:1rem;
@@ -68,7 +70,6 @@ button{
   li{
     display:flex;
     flex-wrap: wrap;
-    //margin:10px 0;
     box-sizing: border-box;
   }
   .listPoster {
@@ -80,21 +81,11 @@ button{
   }
 }
 
-.resultReview {
-  a{
-    color:black;
-    cursor: pointer;
-    text-decoration: none;
-  }
-  .reviewHeadline {
-    padding:10px;
-    border:.5px solid whitesmoke;
-  }
-}
 
 .searchResultsContainer{
-  border-radius:10px 10px 0 0;
+  border-radius:10px;
   color:black;
-  background-color: lightgrey;
+  background-color: rgba(255,255,255,.9);
   padding-top:10px;
+  width:100%;
 }

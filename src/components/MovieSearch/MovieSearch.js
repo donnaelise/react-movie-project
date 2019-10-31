@@ -3,11 +3,11 @@ import MovieSearchResults from "../MovieSearchResults/MovieSearchResults";
 import './MovieSearch.scss';
 
 function MovieSearch (){
-  const[query, setQuery] = useState('love');
+  const[query, setQuery] = useState('hello');
   const[transitionEnded, setTransitionEnded] = useState('true');
+  const[searchFilter, setSearchFilter] = useState('movie');
 
   function handleChange(e){
-
     setQuery(e.target.value);
     document.body.style.backgroundImage = `none`;
     document.getElementById('searchForm').classList.remove('center');
@@ -42,21 +42,39 @@ function MovieSearch (){
   function onFocus(event){
     event.placeholder = '';
   }
+  function handleRadioChange(e){
+    setSearchFilter(e.target.value);
+  }
 
   return (<React.Fragment>
-        <form id={'searchForm'} className={'center'}>
+        <form id={'searchForm'} className={''}>
           <div className={'searchInput'}>
             <input id={'searchFormInput'} className={'searchFormInput'} type={'text'} placeholder={'search'} onFocus={onFocus} onChange={e=>handleChange(e)}/>
             <div className={'resetInput'} onClick={handleResetInput}> 𝗫 </div>
           </div>
           <button onClick={handleClick}>Search</button>
           <button onClick={handleClearSearch}>start over</button>
+          <div id={'filterSearch'}>
+            <label>
+              <input type="radio" name="filterSearch" value="movie" checked={searchFilter === 'movie'} onChange={handleRadioChange}/>
+              Movie
+            </label>
+            <label>
+              <input type="radio" name="filterSearch" value="tv" onChange={handleRadioChange}/>
+              TV Shows
+            </label>
+            <label>
+              <input type="radio" name="filterSearch" value="people" onChange={handleRadioChange}/>
+              People
+            </label>
+          </div>
         </form>
         {query && transitionEnded?
             <div className={'searchResultsContainer'}>
-              <h3>Search for: {query}</h3>
+              <h3>Results for: {query}</h3>
               <MovieSearchResults
                   searchquery={query}
+                  searchFilter={searchFilter}
               />
             </div> : ''}
       </React.Fragment>

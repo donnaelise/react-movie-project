@@ -45,7 +45,7 @@ function BackgroundImages (props) {
     for(let i = 0; i < 5 ; i ++) {
       for (let j = 0; j < 3; j++) {
         poster++;
-        BackgroundImgs.push(`no-repeat ${vertical[i]} ${horizontal[j]} fixed url("http://image.tmdb.org/t/p/w185/${LatestMoviesImages[poster]}")`)
+        BackgroundImgs.push(`no-repeat ${vertical[i]} ${horizontal[j]} fixed url("http://image.tmdb.org/t/p/w500/${LatestMoviesImages[poster]}")`)
       }
     }
 

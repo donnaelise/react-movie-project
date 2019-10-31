@@ -6,8 +6,15 @@
       width:25%;
     }
   }
-.ResultCardTitle--selected {
+#ResultCardTitle--selected {
   margin-left:5px;
+  display: flex;
+  align-items: flex-end;
+  border-radius:10px 10px 0 0;
+  h2{
+    text-align: center;
+
+  }
 }
 }
 

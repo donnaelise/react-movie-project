@@ -23,18 +23,20 @@ function ResultDetail (props) {
       <React.Fragment>
         {result?
             <div className={'ResultDetailContainer'} id={`details_${result.imdbID}`}>
-              <hr/>
+              {/*<hr/>*/}
               <div className={'movieSelected-info'}>
-                {result.Poster ? <img id={'ResultDetailImage'} alt={'no img'} width={'50%'} src={result.Poster} onError={ImgError}/> : ''}
+                {/*{result.Poster ? <img id={'ResultDetailImage'} alt={'no img'} width={'50%'} src={result.Poster} onError={ImgError}/> : ''}*/}
+                <h2>{result.Title}</h2>
                 <dl>
-                  <dt>Year:</dt><dd> {result.Year}</dd>
-                  <dt>Genre:</dt><dd> {result.Genre}</dd>
-                  <dt>Rating:</dt><dd> {result.imdbRating}</dd>
-                  <dt>Actors:</dt><dd> {result.Actors}</dd>
+                  <dt>Year</dt><dd> {result.Year}</dd>
+                  <dt>Genre</dt><dd> {result.Genre}</dd>
+                  <dt>Rating</dt><dd> {result.imdbRating}</dd>
+                  <dt>Actors</dt><dd> {result.Actors}</dd>
                 </dl>
+                <p><b>Plot</b><br/>{result.Plot}</p>
               </div>
               <dl>
-                <dt>Plot:</dt><dd> {result.Plot}</dd>
+                {/*<dt>Plot:</dt><dd> {result.Plot}</dd>*/}
               </dl>
               <NYTimesReviews title={result.Title} />
               {result.Type === 'movie' ? <Trailer imdbID={result.imdbID}/> : ''}

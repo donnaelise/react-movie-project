@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import ResultDetail from "../ResultDetail";
 import './ResultCard.scss';
 
-
 function ResultCard (props) {
   const result=props.result;
   const [selected, setSelected] = useState(false);
@@ -16,6 +15,14 @@ function ResultCard (props) {
     }
   }
 
+  const selectedStyle = {
+    backgroundImage: 'url(' + result.Poster + ')',
+    backgroundPositionY: '-40px',
+    height:'160px',
+    marginLeft:'0px',
+    maxWidth:'100%'
+  };
+
   function handleSelection(val){
     props.selection(val.imdbID)
   }
@@ -27,7 +34,7 @@ function ResultCard (props) {
   return(
       <li key={result.imdbID} >
         <div className={'listItem'} id={'listItem_'+result.imdbID} onClick={() => handleClick(result)}>
-          {props.currentSelection === result.imdbID && selected ? <h2 className={'ResultCardTitle--selected'}>{result.Title}</h2> :
+          {props.currentSelection === result.imdbID && selected ? <div id={'ResultCardTitle--selected'} style={selectedStyle}> </div> :
              <div className={'ResultCard--expanded'}>
                {result.Poster.length !=="N/A" ? <img className={'listPoster'} src={result.Poster} alt={'No image available'} onError={ImgError}/> : ''}
                <div className={'listInfo'}>
