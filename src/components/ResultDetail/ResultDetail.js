@@ -2,8 +2,9 @@ import React, {useState, useEffect} from 'react';
 import './ResultDetail.scss'
 import Trailer from "../Trailer/index";
 import NYTimesReviews from "../NYTimesReviews";
-import ListSelectedInfo from "../ListSelectedInfo";
+import ListSelectedInfo from "../ListSelectedInfo/ListSelectedInfo";
 import $ from "jquery";
+import Merch from "../Merch/Merch";
 
 function ResultDetail (props) {
   const id = props.resultId;
@@ -26,6 +27,7 @@ function ResultDetail (props) {
               <dl>
               </dl>
               <NYTimesReviews title={result.title ? result.title : result.name} />
+              <Merch title={result.title ? result.title : result.name} />
               {props.mediaType === 'movie' ? <Trailer imdbID={result.id}/> : ''}
             </div>
             :''}

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import ResultCard from "../ResultCard/ResultCard";
 import './MovieSearchResults.scss'
-import ListSelectedInfo from "../ListSelectedInfo";
+import ListSelectedInfo from "../ListSelectedInfo/ListSelectedInfo";
 
 let ResultArr = [];
 let newResultObj = {};

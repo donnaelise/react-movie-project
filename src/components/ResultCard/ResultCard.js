@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import ResultDetail from "../ResultDetail";
 import './ResultCard.scss';
-import ListSelectedInfo from "../ListSelectedInfo";
+import ListSelectedInfo from "../ListSelectedInfo/ListSelectedInfo";
 import $ from "jquery"
 
 
