@@ -3,13 +3,20 @@ import './ResultDetail.scss'
 import Trailer from "../Trailer/index";
 import NYTimesReviews from "../NYTimesReviews";
 import ListSelectedInfo from "../ListSelectedInfo";
+import $ from "jquery";
 
 function ResultDetail (props) {
   const id = props.resultId;
   const [result, setResult] = useState(props.result);
 
+  function getAllPositions(){
+    console.log($('#listItem_'+result.id))
+  }
+  console.log(result.id)
+  getAllPositions()
   return(
       <React.Fragment>
+
         {result ?
             <div className={'ResultDetailContainer'} id={`details_${result.id}`}>
               <div className={'movieSelected-info'}>

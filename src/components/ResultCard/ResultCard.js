@@ -2,24 +2,30 @@ import React, {useState, useEffect} from 'react';
 import ResultDetail from "../ResultDetail";
 import './ResultCard.scss';
 import ListSelectedInfo from "../ListSelectedInfo";
+import $ from "jquery"
+
 
 function ResultCard (props) {
   const result=props.result;
   const [selected, setSelected] = useState(false);
-  const [poster, setPoster] = useState('')
+  const [poster, setPoster] = useState('');
+  const [position, setPosition] = useState('');
 
   useEffect(()=>{
-        setListPoster()
+        setListPoster();
+        setResultPostiion();
+
       }, [result]
   );
 
   function handleClick(val){
     setSelected(!selected);
     handleSelection(val);
-    if(!selected){
-      const scrollPoint = document.getElementById(`listItem_${val.id}`).offsetTop;
-      window.scrollTo(0,scrollPoint)
-    }
+
+  }
+
+  function setResultPostiion(){
+    setPosition($('#listItem_' + result.id).position().top);
   }
 
   const selectedStyle = {
@@ -42,6 +48,7 @@ function ResultCard (props) {
 
   function handleSelection(val){
     props.selection(val.id)
+    window.scrollTo(0,position)
   }
 
   function ImgError(e){
@@ -50,10 +57,8 @@ function ResultCard (props) {
 
   return(
       <React.Fragment>
-
         <li key={result.id} >
           <div className={'listItem'} id={'listItem_'+result.id} onClick={() => handleClick(result)}>
-
             {props.currentSelection === result.id && selected ?
                 <div id={'ResultCardTitle--selected'} style={selectedStyle}> </div> :
                 <div className={'ResultCard--expanded'}>
@@ -61,7 +66,7 @@ function ResultCard (props) {
                   <div className={'listInfo'}>
                     <h3>{result.name ? result.name : result.title}</h3>
                     <ListSelectedInfo selectedInfo={result} preview={true}/>
-
+                    {/*{window.scrollTo(0,position)}*/}
                   </div>
                 </div>
             }
