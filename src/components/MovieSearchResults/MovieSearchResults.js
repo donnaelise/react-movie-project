@@ -1,21 +1,72 @@
 import React, {useState, useEffect} from 'react';
 import ResultCard from "../ResultCard/ResultCard";
 import './MovieSearchResults.scss'
+import ListSelectedInfo from "../ListSelectedInfo";
+
 let ResultArr = [];
+let newResultObj = {};
+let tempResult = [];
+let testObj;
+
+let newResultArray = [];
 
 function MovieSearchResults(props) {
   const [result, setResult] = useState([]);
   const [selection, setSelection] = useState('');
+  const [newResult, setNewResult] = useState('');
+
+  let filterList;
+
+  const movieCardInfo = ['title', 'id', 'popularity', 'vote_average', 'vote_count', 'poster_path', 'overview', 'release_date'];
+  const tvCardInfo = ['name', 'id', 'popularity', 'vote_average', 'vote_count', 'id', 'poster_path', 'overview', 'first_air_date'];
+  const personCardInfo = ['name', 'id', 'popularity', 'known_for_department', 'profile_path'];
 
   useEffect(()=>{
-fetch(`https://api.themoviedb.org/3/search/${props.searchFilter}?api_key=b93d00f59612e64271c924d7c3cf8264&language=en-US&query=${props.searchquery}&page=1&include_adult=false`)
-        // fetch(`https://api.themoviedb.org/3/search/multi?api_key=b93d00f59612e64271c924d7c3cf8264&language=en-US&page=1&include_adult=false&query=${props.searchquery}`)
+
+        fetch(`https://api.themoviedb.org/3/search/${props.searchFilter}?api_key=b93d00f59612e64271c924d7c3cf8264&language=en-US&query=${props.searchquery}&page=1&include_adult=false`)
             .then(response => response.json())
             .then(data => data.results)
-            .then(results => setResult(results))
+            .then(result => setResult(result))
+            .then(()=>setNewResult(newResultArray))
             .catch(err => console.log('ERROR:', err));
+
       }, [props.searchquery, props.searchFilter]
   );
+  if(props.searchFilter === 'tv') {
+    filterList = tvCardInfo;
+  }
+  else if(props.searchFilter === 'movie') {
+    filterList = movieCardInfo;
+  }
+  else if(props.searchFilter === 'person') {
+    filterList = personCardInfo;
+  }
+
+  newResultArray = [];
+  for(let i = 0; i < result.length;i++){
+    filterList.map(function(property){
+      tempResult.push({[property]: result[i][property]});
+    });
+    tempResult.map(j => Object.assign(newResultObj , (j)));
+
+    testObj=(filterList.map(
+        function(prop){
+          return {[prop]: newResultObj[prop]}
+        }
+    ));
+
+    newResultArray.push({
+      ...testObj[0],
+      ...testObj[1],
+      ...testObj[2],
+      ...testObj[3],
+      ...testObj[4],
+      ...testObj[5],
+      ...testObj[6],
+      ...testObj[7]
+    })
+  }
+
 
   function displayData() {
     ResultArr = [];
@@ -33,40 +84,20 @@ fetch(`https://api.themoviedb.org/3/search/${props.searchFilter}?api_key=b93d00f
   }
 
   function createDetailCard(val){
-    // return <ResultCard result={val} selection={handleSelection} currentSelection={selection}/>
+    return <ResultCard result={val} selection={handleSelection} currentSelection={selection} mediaType={props.searchFilter} infoSelection={newResult}/>
   }
-
   return(
-
       <React.Fragment>
-        {result ? console.log(result) :''}
         {displayData()}
-
         <ul className={'listResults'}>
-          {ResultArr.map(result=>
-              <div key={result.imdbID} id={'listItem_'+result.imdbID}>
+          {newResult ? newResult.map(result=>
+              <div key={result.id} id={'listItem_'+result.id}>
                 {createDetailCard(result)}
               </div>
-          )
+          ) : ''
           }
         </ul>
       </React.Fragment>
   )
 }
 export default MovieSearchResults;
-
-
-
-
-// useEffect(()=>{
-//
-//       fetch(`https://api.themoviedb.org/3/search/multi?api_key=b93d00f59612e64271c924d7c3cf8264&language=en-US&page=1&include_adult=false&query=${props.searchquery}`)
-//           .then(response => response.json())
-//           .then(data => data.results)
-//           .then(results => setResult(results))
-//           .then(result ? result.map(e=> e.media_type === props.searchFilter ? mediaTypeResult.push(e) : '') : '')
-//           .then(setFilteredResults(mediaTypeResult))
-//           .catch(err => console.log('ERROR:', err));
-//
-//     }, [props.searchquery, props.searchFilter]
-// );

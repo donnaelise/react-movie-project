@@ -21,9 +21,11 @@ function Trailer (props) {
 
   return(
       <React.Fragment>
+        <hr/>
         {youTubeID ?
+
             <div className="video" style={{position: "relative", paddingBottom: "56.25%" /* 16:9 */, paddingTop: 25, height: 0, marginTop: "10px"}}>
-              <iframe onLoad={console.log('youtube video was loaded')}
+            <iframe onLoad={console.log('youtube video was loaded')}
                       style={{position: "absolute", top: 0, left: 0, width: "100%", height: "100%"}}
                       src={`https://www.youtube.com/embed/${youTubeID}`}
                       frameBorder="0"

@@ -3,9 +3,9 @@ import MovieSearchResults from "../MovieSearchResults/MovieSearchResults";
 import './MovieSearch.scss';
 
 function MovieSearch (){
-  const[query, setQuery] = useState('hello');
+  const[query, setQuery] = useState('jones');
   const[transitionEnded, setTransitionEnded] = useState('true');
-  const[searchFilter, setSearchFilter] = useState('person');
+  const[searchFilter, setSearchFilter] = useState('movie');
 
   function handleChange(e){
     setQuery(e.target.value);
@@ -47,6 +47,7 @@ function MovieSearch (){
   }
 
   return (<React.Fragment>
+        <h1 className={'home__title'}>Movie Database</h1>
         <form id={'searchForm'} className={''}>
           <div className={'searchInput'}>
             <input id={'searchFormInput'} className={'searchFormInput'} type={'text'} placeholder={'search'} onFocus={onFocus} onChange={e=>handleChange(e)}/>
@@ -56,7 +57,7 @@ function MovieSearch (){
           <button onClick={handleClearSearch}>start over</button>
           <div id={'filterSearch'}>
             <label>
-              <input type="radio" name="filterSearch" value="movie" onChange={handleRadioChange}/>
+              <input type="radio" name="filterSearch" value="movie" checked={searchFilter === 'movie'} onChange={handleRadioChange}/>
               Movie
             </label>
             <label>
@@ -64,7 +65,7 @@ function MovieSearch (){
               TV Shows
             </label>
             <label>
-              <input type="radio" name="filterSearch" value="person" checked={searchFilter === 'person'} onChange={handleRadioChange}/>
+              <input type="radio" name="filterSearch" value="person" onChange={handleRadioChange}/>
               Person
             </label>
           </div>

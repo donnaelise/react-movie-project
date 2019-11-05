@@ -16,5 +16,25 @@
 
   }
 }
+
+  dl{
+    margin:0;
+    float:left;
+  }
+  dd{
+    margin-left:20vw;
+    margin-bottom:5px;
+  }
+  dt {
+    margin:0;
+    max-width: 20vw;
+    text-align: left;
+    font-weight: bold;
+    float:left;
+  }
+
 }
 
+.ResultCard--expanded{
+  font-size:.6rem;
+}

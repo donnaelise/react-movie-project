@@ -6,18 +6,6 @@
   text-align: left;
   font-size:.8rem;
 
-  //dl{
-  //  margin-top:0;
-  //}
-  //dd{
-  //  margin:0;
-  //}
-  //dt {
-  //  margin:0;
-  //  text-align: left;
-  //  font-weight: bold;
-  //}
-
   &-info{
     align-items:start;
     //display:flex;
@@ -35,12 +23,12 @@
       float:left;
     }
     dd{
-      margin-left:20vw;
+      margin-left:30vw;
       margin-bottom:10px;
     }
     dt {
       margin:0;
-      max-width: 20vw;
+      max-width: 30vw;
       text-align: left;
       font-weight: bold;
       float:left;
@@ -49,7 +37,6 @@
 }
 
 .ResultDetailContainer {
-//max-width:100%;
   padding:5px;
   margin: 0 8px;
 }

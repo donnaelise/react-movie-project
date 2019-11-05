@@ -4,6 +4,10 @@ html{
   scroll-behavior: smooth;
   background:grey;
 }
+
+.home__title{
+  color:white;
+}
 button{
   border-radius: 5px;
   -webkit-appearance: none;
@@ -19,6 +23,18 @@ button{
   margin-bottom:5%;
   width:80%;
   max-width:800px;
+  button{
+    background-color: $light;
+    color:$dark;
+  }
+
+input[type=radio]{
+  //-webkit-appearance: none;
+}
+
+
+
+
 }
 
 .searchBarToTop {
@@ -58,7 +74,7 @@ button{
   .resetInput{
     cursor:pointer;
     color: #282c34;
-    padding:0 10px;
+    padding:0 10px 0 15px;
   }
 }
 
