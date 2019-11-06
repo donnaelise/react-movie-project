@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import MovieSearchResults from "../MovieSearchResults/MovieSearchResults";
 import './MovieSearch.scss';
 import $ from "jquery";
@@ -8,6 +8,11 @@ function MovieSearch (){
   const[query, setQuery] = useState('');
   const[transitionEnded, setTransitionEnded] = useState('true');
   const[searchFilter, setSearchFilter] = useState('movie');
+
+
+  useEffect(()=>{
+    scrollToResults()
+  }, [query]);
 
   function handleChange(e){
     setQuery(e.target.value);
@@ -31,8 +36,32 @@ function MovieSearch (){
   function handleResetInput(e){
     e.preventDefault();
     setQuery('');
+    scrollToResults();
     document.getElementById('searchForm').reset();
     document.getElementById('searchFormInput').focus();
+  }
+
+  function scrollToResults(){
+    if(query){
+      $('.home__title')
+          .css("transition","all 1s ease")
+          .css("fontSize", "1.5rem",)
+          .css("fontWeight", "500");
+      $('.searchBarHome')
+          .css("paddingTop", "0");
+      $('.searchBar')
+          .css("marginTop", "0")
+          .css("marginBottom", "0");
+      $('#filterSearch')
+          .css("transform","scale(0.8), 0.5")
+      // .css(font-size)
+
+    } else{
+      $('.home__title')
+          .css("transition","all 1s ease")
+          .css("fontSize", "5rem",)
+          .css("fontWeight", "200");
+    }
   }
 
   function handleClick(e){
@@ -48,13 +77,13 @@ function MovieSearch (){
   function handleRadioChange(e){
     setSearchFilter(e.target.value);
   }
-
+  function handleClickOpenSearch(){
+  }
 
   $(function() {
     var header = $(".GreyHeader");
     $(window).scroll(function() {
-      var scroll = $(window).scrollTop();
-
+      let scroll = $(window).scrollTop();
       if (scroll >= 500) {
         header.removeClass('GreyHeader').addClass("FireBrickRed ");
         header.addClass("transition");
@@ -69,7 +98,8 @@ function MovieSearch (){
 
   return (<React.Fragment>
         <h1 className={'home__title'}>Movie Database</h1>
-        <form id={'searchForm'} className={'searchBarToTop'}>
+
+        <form id={'searchForm'} className={'searchBarToTop searchBarHome'}>
           <div className={'searchBar'}>
 
             <div className={'searchInput'}>
@@ -78,7 +108,7 @@ function MovieSearch (){
             </div>
             <button className={'button button-search'} onClick={handleClick}>Search</button>
           </div>
-          <button className={'button button-back-home'} onClick={handleClearSearch}>Back</button>
+          {/*<button className={'button button-back-home'} onClick={handleClearSearch}>Back</button>*/}
           <div id={'filterSearch'}>
             <label className={'filterLabel'}>
               <input type="radio" name="filterSearch" value="movie" checked={searchFilter === 'movie'} onChange={handleRadioChange}/>
@@ -95,9 +125,11 @@ function MovieSearch (){
               <span className={'checkmark'}> </span>
             </label>
           </div>
+
+
         </form>
         {query && transitionEnded?
-            <div className={'searchResultsContainer'}>
+            <div className={'searchResultsContainer'} id={'resultContainer'}>
               <h3 className={'searchTitle'}>Results for: {query}</h3>
               <MovieSearchResults
                   searchquery={query}

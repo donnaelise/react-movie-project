@@ -53,7 +53,8 @@ function ResultCard (props) {
 
   function handleSelection(val){
     props.selection(val.id);
-    window.scrollTo(0, position)
+    document.getElementById('resultContainer').scrollTo(0, position)
+    // window.scrollTo(0, position)
   }
 
   function ImgError(e){
