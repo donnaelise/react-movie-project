@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useLayoutEffect} from 'react';
 import ResultDetail from "../ResultDetail";
 import './ResultCard.scss';
 import ListSelectedInfo from "../ListSelectedInfo/ListSelectedInfo";
@@ -11,9 +11,8 @@ function ResultCard (props) {
   const [poster, setPoster] = useState('');
   const [position, setPosition] = useState('');
 
-  useEffect(()=>{
+  useLayoutEffect(()=>{
         setListPoster();
-        setResultPostiion();
 
       }, [result]
   );
@@ -21,10 +20,9 @@ function ResultCard (props) {
   function handleClick(val){
     setSelected(!selected);
     handleSelection(val);
-
   }
 
-  function setResultPostiion(){
+  function setResultPostition(){
     setPosition($('#listItem_' + result.id).position().top);
   }
 
@@ -47,13 +45,30 @@ function ResultCard (props) {
   }
 
   function handleSelection(val){
-    props.selection(val.id)
+    props.selection(val.id);
     window.scrollTo(0,position)
   }
 
   function ImgError(e){
     e.target.style.display="none";
   }
+
+  $(document).ready(function() {
+    var imagesLoaded = 0;
+    var totalImages = $('img').length;
+
+    $('img').on('load', function(event) {
+      imagesLoaded++;
+      if (imagesLoaded == totalImages) {
+        allImagesLoaded();
+      }
+    });
+
+    function allImagesLoaded() {
+      console.log('ALL IMAGES LOADED');
+      setResultPostition();
+    }
+  });
 
   return(
       <React.Fragment>
@@ -62,8 +77,11 @@ function ResultCard (props) {
             {props.currentSelection === result.id && selected ?
                 <div id={'ResultCardTitle--selected'} style={selectedStyle}> </div> :
                 <div className={'ResultCard--expanded'}>
-                  <img className={'listPoster'} src={poster} alt={'No image available'} onError={ImgError}/>
+                  {/*<div className={'posterContainer listPoster'}> </div>*/}
+                  {/*{document.getElementById('listItem_'+result.id)*/}
+                  <img className={'listPoster'} src={poster} alt={'No poster available'} onError={ImgError}/>
                   <div className={'listInfo'}>
+                    <h4>{position}</h4>
                     <h3>{result.name ? result.name : result.title}</h3>
                     <ListSelectedInfo selectedInfo={result} preview={true}/>
                     {/*{window.scrollTo(0,position)}*/}

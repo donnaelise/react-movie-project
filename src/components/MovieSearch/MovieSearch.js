@@ -3,7 +3,7 @@ import MovieSearchResults from "../MovieSearchResults/MovieSearchResults";
 import './MovieSearch.scss';
 
 function MovieSearch (){
-  const[query, setQuery] = useState('jones');
+  const[query, setQuery] = useState('story');
   const[transitionEnded, setTransitionEnded] = useState('true');
   const[searchFilter, setSearchFilter] = useState('movie');
 
@@ -53,26 +53,28 @@ function MovieSearch (){
             <input id={'searchFormInput'} className={'searchFormInput'} type={'text'} placeholder={'search'} onFocus={onFocus} onChange={e=>handleChange(e)}/>
             <div className={'resetInput'} onClick={handleResetInput}> 𝗫 </div>
           </div>
-          <button onClick={handleClick}>Search</button>
-          <button onClick={handleClearSearch}>start over</button>
+          <button className={'button button-search'} onClick={handleClick}>Search</button>
+          <button className={'button button-search'} onClick={handleClearSearch}>start over</button>
           <div id={'filterSearch'}>
-            <label>
+            <label className={'filterLabel'}>
               <input type="radio" name="filterSearch" value="movie" checked={searchFilter === 'movie'} onChange={handleRadioChange}/>
-              Movie
+              <span className={'checkmark'}> </span> Movie
             </label>
-            <label>
+            <label className={'filterLabel'}>
               <input type="radio" name="filterSearch" value="tv" onChange={handleRadioChange}/>
               TV Shows
+              <span className={'checkmark'}> </span>
             </label>
-            <label>
+            <label className={'filterLabel'}>
               <input type="radio" name="filterSearch" value="person" onChange={handleRadioChange}/>
               Person
+              <span className={'checkmark'}> </span>
             </label>
           </div>
         </form>
         {query && transitionEnded?
             <div className={'searchResultsContainer'}>
-              <h3>Results for: {query}</h3>
+              <h3 className={'searchTitle'}>Results for: {query}</h3>
               <MovieSearchResults
                   searchquery={query}
                   searchFilter={searchFilter}

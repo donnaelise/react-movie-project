@@ -1,45 +1,23 @@
 @import "../../_variables.scss";
 
+
+
+//--------------------general--------------------
+
 html{
   scroll-behavior: smooth;
   background:grey;
 }
 
-.home__title{
-  color:white;
-}
 button{
   border-radius: 5px;
   -webkit-appearance: none;
-  background-color:white;
   font-size:1rem;
   padding:5px 15px;
   margin:5px;
-  border-style: none;
+  border:1px black solid;
 }
 
-#searchForm{
-  margin-top:10%;
-  margin-bottom:5%;
-  width:80%;
-  max-width:800px;
-  button{
-    background-color: $light;
-    color:$dark;
-  }
-
-input[type=radio]{
-  //-webkit-appearance: none;
-}
-
-
-
-
-}
-
-.searchBarToTop {
-  transition:transform .4s cubic-bezier(0,.75,.42,.76);
-}
 .center{
   transform: translate(0%,40vh);
   justify-content: center;
@@ -47,8 +25,89 @@ input[type=radio]{
   position: absolute;
 }
 
-#searchFormInput{
+
+//--------------------SEARCH FORM--------------------
+#searchForm{
+  margin-top:10%;
+  margin-bottom:5%;
+  width:80%;
+  max-width:800px;
+
+  .home__title{
+    color:white;
+  }
+
+  .button-search{
+    font-weight:500;
+    font-size:1.5rem;
+    border:2px solid white;
+    //background-color: $light;
+    //color:$dark;
+    background-color: transparent;
+    color:white;
+    cursor: pointer;
+
+  }
+
+  //--------------------radio buttons--------------------
+
+  .filterLabel {
+    display: block;
+    position: relative;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+  }
+  input[type=radio]{
+    -webkit-appearance: none;
+  }
+  .checkmark {
+    position: absolute;
+    left: 0;
+    height: 26px;
+    width: 26px;
+    border-radius:2px;
+    border:2px solid white;
+    box-sizing: border-box;
+  }
+  .filterLabel:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  .container input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    border-radius:1px;
+  }
+  .filterLabel input:checked ~ .checkmark:after {
+    animation: createBox .2s forwards ease-out;
+    width:16px;
+    height:16px;
+    display:block;
+  }
+  @keyframes createBox{
+    from {
+      transform: scale(0);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  .filterLabel .checkmark:after {
+    top: 3px;
+    left: 3px;
+    background: white;
+  }
 }
+
+.searchBarToTop {
+  transition:transform .4s cubic-bezier(0,.75,.42,.76);
+}
+
+//--------------------search bar--------------------
 
 .searchInput{
   padding:5px 0;
@@ -60,7 +119,8 @@ input[type=radio]{
   margin-bottom:5px;
 
   input.searchFormInput{
-    font-size:1rem;
+    width:90%;
+    font-size:1.5rem;
     padding:5px 10px;
     border-style: none;
     margin-left:13px;
@@ -72,7 +132,7 @@ input[type=radio]{
     }
   }
   .resetInput{
-    cursor:pointer;
+    //cursor:pointer;
     color: #282c34;
     padding:0 10px 0 15px;
   }
@@ -88,20 +148,27 @@ input[type=radio]{
     flex-wrap: wrap;
     box-sizing: border-box;
   }
-  .listPoster {
-    width:30%;
-    margin-right:15px;
-  }
+  //.listPoster {
+  //  width:30%;
+  //  margin-right:15px;
+  //}
   .listInfo {
     max-width:70%;
   }
 }
-
+.searchTitle {
+  width:100%;
+  //flex-basis: 100%;
+}
 
 .searchResultsContainer{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
   border-radius:10px;
   color:black;
   background-color: rgba(255,255,255,.9);
   padding-top:10px;
   width:100%;
+  max-width:800px;
 }

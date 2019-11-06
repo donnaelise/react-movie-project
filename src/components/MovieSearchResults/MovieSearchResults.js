@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useLayoutEffect} from 'react';
 import ResultCard from "../ResultCard/ResultCard";
 import './MovieSearchResults.scss'
-import ListSelectedInfo from "../ListSelectedInfo/ListSelectedInfo";
+// import ListSelectedInfo from "../ListSelectedInfo/ListSelectedInfo";
 
 let ResultArr = [];
 let newResultObj = {};
@@ -32,6 +32,14 @@ function MovieSearchResults(props) {
 
       }, [props.searchquery, props.searchFilter]
   );
+
+  useLayoutEffect(()=>{
+
+          console.log('----------------layout from moviesearchresult  fininshed----------------')
+
+      }
+  );
+
   if(props.searchFilter === 'tv') {
     filterList = tvCardInfo;
   }
@@ -44,9 +52,9 @@ function MovieSearchResults(props) {
 
   newResultArray = [];
   for(let i = 0; i < result.length;i++){
-    filterList.map(function(property){
-      tempResult.push({[property]: result[i][property]});
-    });
+    filterList.map(property=>
+      tempResult.push({[property]: result[i][property]})
+    );
     tempResult.map(j => Object.assign(newResultObj , (j)));
 
     testObj=(filterList.map(

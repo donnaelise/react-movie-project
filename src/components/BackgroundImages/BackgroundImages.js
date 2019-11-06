@@ -17,7 +17,7 @@ function BackgroundImages (props) {
 
   function getRandomNum(){
     if (results){
-      randomNum = Math.floor(Math.random()*results.length)
+      return randomNum = Math.floor(Math.random()*results.length)
     }
   }
 
@@ -47,6 +47,8 @@ function BackgroundImages (props) {
         poster++;
         BackgroundImgs.push(`no-repeat ${vertical[i]} ${horizontal[j]} fixed url("http://image.tmdb.org/t/p/w500/${LatestMoviesImages[poster]}")`)
       }
+      // BackgroundImgs.push(`linear-gradient(black, black)`)
+
     }
 
     BackgroundImgs = BackgroundImgs.toString();

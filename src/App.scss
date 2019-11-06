@@ -3,7 +3,7 @@
 .App {
   text-align: center;
   color:black;
-
+  //background-blend-mode: saturation;
 }
 
 .App-logo {
@@ -13,17 +13,18 @@
 .App-header {
   //width:100%;
   //max-width:1200px;
-  background-color: rgba(0,0,0,.5);
+  background-color: rgba(0,0,0,.6);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  //padding-top:20px;
+
 
 
 }
+
 
 .App-link {
   color: #09d3ac;

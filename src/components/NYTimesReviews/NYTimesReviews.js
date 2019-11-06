@@ -15,7 +15,7 @@ function NYTimesReviews (props) {
                 }
             )
             .catch(()=>console.log('fetch failed'))
-      }, [props.title]
+      }, [title]
   );
 
   return(

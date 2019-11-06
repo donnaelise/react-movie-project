@@ -27,7 +27,7 @@ function ResultDetail (props) {
               <dl>
               </dl>
               <NYTimesReviews title={result.title ? result.title : result.name} />
-              <Merch title={result.title ? result.title : result.name} />
+              {/*<Merch title={result.title ? result.title : result.name} />*/}
               {props.mediaType === 'movie' ? <Trailer imdbID={result.id}/> : ''}
             </div>
             :''}
