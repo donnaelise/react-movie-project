@@ -59,7 +59,7 @@ function BackgroundImages (props) {
   return(
 
       <React.Fragment>
-        {getRandomNum()}
+        {/*{getRandomNum()}*/}
         {setBackgroundImage()}
       </React.Fragment>
   )
