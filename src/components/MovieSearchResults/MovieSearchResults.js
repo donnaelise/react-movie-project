@@ -1,20 +1,17 @@
-import React, {useState, useEffect, useLayoutEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import ResultCard from "../ResultCard/ResultCard";
 import './MovieSearchResults.scss'
-// import ListSelectedInfo from "../ListSelectedInfo/ListSelectedInfo";
 
 let ResultArr = [];
 let newResultObj = {};
 let tempResult = [];
 let testObj;
-
 let newResultArray = [];
 
 function MovieSearchResults(props) {
   const [result, setResult] = useState([]);
   const [selection, setSelection] = useState('');
   const [newResult, setNewResult] = useState('');
-
   let filterList;
 
   const movieCardInfo = ['title', 'id', 'popularity', 'vote_average', 'vote_count', 'poster_path', 'overview', 'release_date'];
@@ -33,13 +30,6 @@ function MovieSearchResults(props) {
       }, [props.searchquery, props.searchFilter]
   );
 
-  useLayoutEffect(()=>{
-
-          console.log('----------------layout from moviesearchresult  fininshed----------------')
-
-      }
-  );
-
   if(props.searchFilter === 'tv') {
     filterList = tvCardInfo;
   }
@@ -56,13 +46,11 @@ function MovieSearchResults(props) {
       tempResult.push({[property]: result[i][property]})
     );
     tempResult.map(j => Object.assign(newResultObj , (j)));
-
     testObj=(filterList.map(
         function(prop){
           return {[prop]: newResultObj[prop]}
         }
     ));
-
     newResultArray.push({
       ...testObj[0],
       ...testObj[1],
@@ -74,7 +62,6 @@ function MovieSearchResults(props) {
       ...testObj[7]
     })
   }
-
 
   function displayData() {
     ResultArr = [];
@@ -99,9 +86,9 @@ function MovieSearchResults(props) {
         {displayData()}
         <ul className={'listResults'}>
           {newResult ? newResult.map(result=>
-              <div key={result.id} id={'listItem_'+result.id}>
+              <li key={result.id} id={'listItem_'+result.id}>
                 {createDetailCard(result)}
-              </div>
+              </li>
           ) : ''
           }
         </ul>

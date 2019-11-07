@@ -1,7 +1,5 @@
 @import "../../_variables.scss";
 
-
-
 //--------------------general--------------------
 
 html{
@@ -30,19 +28,16 @@ button{
   font-weight:200;
   font-size:5rem;
   margin:0;
-  //transition: font-size .5s ;
-  //height:50vh;
   text-align: center;
-  //line-height:40vh;
 }
 
 //--------------------SEARCH FORM--------------------
 #searchForm{
-  //height:100%;
-//height:50vh;
   width:100%;
   max-width:800px;
   font-weight:200;
+  padding: 30% 0 60% 0;
+  margin:0 auto;
 
   .searchBar {
     display:flex;
@@ -58,105 +53,88 @@ button{
     border:none;
   }
 
-
-
-
   //--------------------radio buttons--------------------
-
-  .filterLabel {
-    display: block;
-    position: relative;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
-  }
-  input[type=radio]{
-    -webkit-appearance: none;
-    margin-right:30px;
-  }
   #filterSearch {
+    padding-top:5px;
     display:flex;
     justify-content:space-around;
     flex-wrap: wrap;
-  }
-  .checkmark {
-    position: absolute;
-    left: 0;
-    height: 26px;
-    width: 26px;
-    border-radius:2px;
-    border:2px solid white;
-    box-sizing: border-box;
-  }
-  .filterLabel:hover input ~ .checkmark {
-    background-color: #ccc;
-  }
-  .container input:checked ~ .checkmark {
-    background-color: #2196F3;
-  }
-  .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-    border-radius:1px;
-  }
-  .filterLabel input:checked ~ .checkmark:after {
-    animation: createBox .2s forwards ease-out;
-    width:16px;
-    height:16px;
-    display:block;
-  }
-  @keyframes createBox{
-    from {
-      transform: scale(0);
+
+    .filterLabel {
+      display: block;
+      position: relative;
+      margin-bottom: 12px;
+      cursor: pointer;
+      font-size: 22px;
     }
-    to {
-      transform: scale(1);
+    input[type=radio]{
+      -webkit-appearance: none;
+      margin-right:30px;
+    }
+
+    .checkmark {
+      position: absolute;
+      left: 0;
+      height: 26px;
+      width: 26px;
+      border-radius:2px;
+      border:2px solid white;
+      box-sizing: border-box;
+    }
+    .filterLabel:hover input ~ .checkmark {
+      background-color: #ccc;
+    }
+    .container input:checked ~ .checkmark {
+      background-color: #2196F3;
+    }
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+      border-radius:1px;
+    }
+    .filterLabel input:checked ~ .checkmark:after {
+      animation: createBox .2s forwards ease-out;
+      width:14px;
+      height:14px;
+      display:block;
+    }
+    @keyframes createBox{
+      from {
+        transform: scale(0);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+    .filterLabel .checkmark:after {
+      top: 4px;
+      left: 4px;
+      background: $green;
     }
   }
-  .filterLabel .checkmark:after {
-    top: 3px;
-    left: 3px;
-    background: $green;
-  }
-}
-
-
-.searchBarToTop {
-  transition:transform .4s cubic-bezier(0,.75,.42,.76);
-
 }
 
 .searchBarToTop{
   width:100vw;
-  //padding;
   top:0px;
-  //background:#121212;
   background:rgba(18,18,18,.7);
   border-radius:10px;
   transition:transform .4s cubic-bezier(0,.75,.42,.76);
-  position:sticky;
-  z-index:1;
-  //height:50vh;
-
-
-
 
   .button-back-home{
     display:none;
   }
-
 }
-.searchBarHome{
 
+.searchBarHome{
   padding-top:30px;
   border-radius: 20px;
-  //height:50vh;
   background:rgb(44,44,44);
-.searchBar {
-  margin-bottom: 15px;
-  max-width: 100%;
-}
+  .searchBar {
+    margin-bottom: 15px;
+    max-width: 100%;
+  }
   #filterSearch {
   }
 }
@@ -170,7 +148,7 @@ button{
   border-radius: 5px;
   background-color: white;
   display:flex;
-  width:65%;
+  flex-basis:65%;
   justify-content: space-between;
   align-items: center;
   //margin-bottom:5px;
@@ -196,7 +174,6 @@ button{
     padding:0 10px 0 15px;
   }
 }
-
 .listResults{
   list-style: none;
   text-align: left;
@@ -207,44 +184,21 @@ button{
     flex-wrap: wrap;
     box-sizing: border-box;
   }
-  //.listPoster {
-  //  width:30%;
-  //  margin-right:15px;
-  //}
-  .listInfo {
-    max-width:70%;
-  }
 }
 .searchTitle {
   width:100%;
-  //flex-basis: 100%;
 }
 
 .searchResultsContainer{
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-//border-radius: 10px;
-color: black;
-background-color: rgba(255, 255, 255, 0.9);
-padding-top: 10px;
-width: 100%;
-          max-width: 800px;
-top: 0;
-position: sticky;
-max-height: 100vh;
-overflow: scroll;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding-top: 10px;
+  width: 100%;
+  max-width: 800px;
+  top: 0;
+  margin: 0 auto;
+  overflow: scroll;
 }
-
-
-//.searchResultsContainer{
-//  display:flex;
-//  flex-wrap: wrap;
-//  justify-content: center;
-//  border-radius:10px;
-//  color:black;
-//  background-color: rgba(255,255,255,.9);
-//  padding-top:10px;
-//  width:100%;
-//  max-width:800px;
-//}

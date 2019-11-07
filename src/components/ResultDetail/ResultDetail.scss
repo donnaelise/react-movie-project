@@ -8,7 +8,6 @@
 
   &-info{
     align-items:start;
-    //display:flex;
     flex-direction: row;
     h2{
       margin: .5rem 0;
@@ -20,18 +19,17 @@
     dl{
       margin-left:0;
       margin-bottom:0;
-      float:left;
-    }
-    dd{
-      margin-left:30vw;
-      margin-bottom:10px;
-    }
-    dt {
-      margin:0;
-      max-width: 30vw;
-      text-align: left;
-      font-weight: bold;
-      float:left;
+      dd{
+        margin-left:30vw;
+        margin-bottom:10px;
+      }
+      dt {
+        margin:0;
+        max-width: 30vw;
+        text-align: left;
+        font-weight: bold;
+        float:left;
+      }
     }
   }
 }

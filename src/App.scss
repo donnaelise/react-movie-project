@@ -3,7 +3,7 @@
 .App {
   text-align: center;
   color:black;
-  //background-blend-mode: saturation;
+  font-family: 'Assistant', sans-serif;
 }
 
 .App-logo {
@@ -11,24 +11,15 @@
 }
 
 .App-header {
-  font-family: 'Assistant', sans-serif;
-
-  //width:100%;
-  //max-width:1200px;
   background-color: rgba(18,18,18,.7);
-  //background-color: rgba(90,90,90,.6);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  justify-content: end;
+  justify-content: space-between;
   font-size: calc(10px + 2vmin);
   color: white;
-
-
-
 }
-
 
 .App-link {
   color: #09d3ac;

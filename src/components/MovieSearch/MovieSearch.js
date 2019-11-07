@@ -5,13 +5,13 @@ import $ from "jquery";
 
 
 function MovieSearch (){
-  const[query, setQuery] = useState('');
+  const[query, setQuery] = useState('s');
   const[transitionEnded, setTransitionEnded] = useState('true');
   const[searchFilter, setSearchFilter] = useState('movie');
 
 
   useEffect(()=>{
-    scrollToResults()
+    resizeNavbar()
   }, [query]);
 
   function handleChange(e){
@@ -19,8 +19,6 @@ function MovieSearch (){
     document.body.style.backgroundImage = `none`;
     document.getElementById('searchForm').classList.remove('center');
     document.getElementById('searchForm').classList.add('searchBarToTop');
-    // $('#searchForm .searchInput').css("background-color", "black")
-
     document.getElementById('searchForm').addEventListener('transitionend', () => {
       setTransitionEnded(true);
     });
@@ -36,17 +34,20 @@ function MovieSearch (){
   function handleResetInput(e){
     e.preventDefault();
     setQuery('');
-    scrollToResults();
+    // resizeNavbar();
     document.getElementById('searchForm').reset();
     document.getElementById('searchFormInput').focus();
   }
 
-  function scrollToResults(){
+  function resizeNavbar(){
     if(query){
       $('.home__title')
           .css("transition","all 1s ease")
           .css("fontSize", "1.5rem",)
           .css("fontWeight", "500");
+      $('#searchForm')
+          .css("transition","all 1s ease")
+          .css("padding","30px 0px 0px 0px");
       $('.searchBarHome')
           .css("paddingTop", "0");
       $('.searchBar')
@@ -54,13 +55,15 @@ function MovieSearch (){
           .css("marginBottom", "0");
       $('#filterSearch')
           .css("transform","scale(0.8), 0.5")
-      // .css(font-size)
-
+      
     } else{
       $('.home__title')
           .css("transition","all 1s ease")
           .css("fontSize", "5rem",)
           .css("fontWeight", "200");
+      $('#searchForm')
+          .css("padding","30% 0 60% 0")
+          .css("transition","padding 1s ease")
     }
   }
 
@@ -77,31 +80,12 @@ function MovieSearch (){
   function handleRadioChange(e){
     setSearchFilter(e.target.value);
   }
-  function handleClickOpenSearch(){
-  }
-
-  $(function() {
-    var header = $(".GreyHeader");
-    $(window).scroll(function() {
-      let scroll = $(window).scrollTop();
-      if (scroll >= 500) {
-        header.removeClass('GreyHeader').addClass("FireBrickRed ");
-        header.addClass("transition");
-      } else {
-        header.removeClass("FireBrickRed ").addClass('GreyHeader');
-        header.addClass("transition");
-      }
-    });
-  });
-
-
 
   return (<React.Fragment>
         <h1 className={'home__title'}>Movie Database</h1>
 
         <form id={'searchForm'} className={'searchBarToTop searchBarHome'}>
           <div className={'searchBar'}>
-
             <div className={'searchInput'}>
               <input id={'searchFormInput'} className={'searchFormInput'} type={'text'} placeholder={'search'} onFocus={onFocus} onChange={e=>handleChange(e)}/>
               <div className={'resetInput'} onClick={handleResetInput}> 𝗫 </div>
@@ -129,13 +113,13 @@ function MovieSearch (){
 
         </form>
         {query && transitionEnded?
-            <div className={'searchResultsContainer'} id={'resultContainer'}>
+            <section className={'searchResultsContainer'} id={'resultContainer'}>
               <h3 className={'searchTitle'}>Results for: {query}</h3>
               <MovieSearchResults
                   searchquery={query}
                   searchFilter={searchFilter}
               />
-            </div> : ''}
+            </section> : ''}
       </React.Fragment>
   )
 }

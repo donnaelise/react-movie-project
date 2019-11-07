@@ -1,53 +1,57 @@
 .listItem {
-  //height:250px;
   position:relative;
-  overflow:hidden;
-  .ResultCard--expanded{
+
+  .ResultCard{
     display:flex;
+    width:100%;
+    max-width:800px;
+    min-height:25%;
+
     .listPoster {
       border-radius:10px 0 0 10px;
-      width:25%;
-      //height:100%;
+      width:100%;
+      height:100%;
+      overflow:hidden;
+      position:absolute;
+      object-fit:cover;
     }
-
     .posterContainer {
       width:25%;
       border:2px solid red;
       height:300px;
-
     }
   }
 
+  .imageContainer {
+    flex: 0 0 auto;
+    position: relative;
+    width:25%;
+  }
 
   #ResultCardTitle--selected {
     margin-left:5px;
     display: flex;
     align-items: flex-end;
     border-radius:10px 10px 0 0;
-    h2{
+    h2 {
       text-align: center;
-
     }
   }
 
-  dl{
+  dl {
     margin:0;
-    float:left;
-  }
-  dd{
-    margin-left:8rem;
-    margin-bottom:5px;
-  }
-  dt {
-    margin:0;
-    max-width: 7rem;
-    text-align: left;
-    font-weight: bold;
-    float:left;
+
+    dd {
+      margin-left:8rem;
+      margin-bottom:5px;
+    }
+    dt {
+      margin:0;
+      max-width: 7rem;
+      text-align: left;
+      font-weight: bold;
+      float:left;
+    }
   }
 
-}
-
-.ResultCard--expanded{
-  font-size:.8rem;
 }
