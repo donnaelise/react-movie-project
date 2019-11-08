@@ -12,11 +12,14 @@ function ListSelectedInfo (props) {
 
   const exclude = ['name', 'title', 'id', 'overview'];
 
+  console.log();
+
   return(
       <React.Fragment>
+
         <dl className={'ListSelectedDescription'}>
           { Object.keys(obj).map(function (prop) {
-            if (typeof(prop) === 'string' && !prop.includes('path')) {
+            if (typeof(prop) === 'string' && !prop.includes('path') && prop !== 'known_for') {
               if(props.preview){
                 if(!exclude.includes(prop) && obj[prop]){
                   return obj[prop].length > 60 ? ' ' :
@@ -37,6 +40,7 @@ function ListSelectedInfo (props) {
           })
           }
         </dl>
+
       </React.Fragment>
   )
 }

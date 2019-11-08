@@ -38,20 +38,34 @@
     }
   }
 
-  dl {
-    margin:0;
 
-    dd {
-      margin-left:8rem;
-      margin-bottom:5px;
-    }
-    dt {
-      margin:0;
-      max-width: 7rem;
-      text-align: left;
-      font-weight: bold;
-      float:left;
-    }
+}
+
+
+.ResultDetailContainer .listItem{
+  margin:10px auto;
+  //padding:10px;
+  //border:.5px solid grey;
+  border-radius: 15px;
+  //width:90%;
+  box-shadow: 0 4px 5px 2px darkgrey;
+}
+.ResultDetailContainer{
+  width:100%;
+  padding:10px;
+}
+dl {
+  margin:0;
+
+  dd {
+    margin-left:8rem;
+    margin-bottom:5px;
   }
-
+  dt {
+    margin:0;
+    max-width: 7rem;
+    text-align: left;
+    font-weight: bold;
+    float:left;
+  }
 }

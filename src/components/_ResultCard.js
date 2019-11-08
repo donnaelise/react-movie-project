@@ -1,14 +1,13 @@
 import React, {useState, useEffect} from 'react';
-import './ResultCard.scss';
 import $ from "jquery";
-import ListSelectedInfo from "../ListSelectedInfo/ListSelectedInfo";
-import ResultDetail from "../ResultDetail";
+import ListSelectedInfo from "./ListSelectedInfo/ListSelectedInfo";
+import ResultDetail from "./ResultDetail";
+import '../components/ResultCard/ResultCard.scss'
 
-function ResultCard (props) {
+function _ResultCard (props) {
   const result=props.result;
   const [selected, setSelected] = useState(false);
   const [poster, setPoster] = useState('');
-  // const [position, setPosition] = useState('');
 
 
   useEffect(()=>{
@@ -18,14 +17,16 @@ function ResultCard (props) {
   );
 
   function handleClick(val){
-    console.log('clicked');
-    handleSelection(val);
+    // if(!props.nested) {
+      console.log('clicked');
+      handleSelection(val);
 
-    if(selected) {
-      setSelected(false)
-    } else if (!selected) {
-      setSelected(true)
-    }
+      if (selected) {
+        setSelected(false)
+      } else if (!selected) {
+        setSelected(true)
+      }
+    // }
   }
 
   const selectedStyle = {
@@ -61,17 +62,16 @@ function ResultCard (props) {
   }
 
   function checkIfNested(){
-    if(props.nested === false) {
+    // if(props.nested === false) {
       if(props.currentSelection === result.id && selected){
         return <ResultDetail nested={props.nested} resultId={result.id} currentSelection={props.currentSelection} mediaType={props.mediaType ? props.mediaType : ''} result={result}/>
       }
-    }
+    // }
   }
 
   return(
       <React.Fragment>
-        <hr/><p>JPHIDOBSJKNKQEJFLKD</p>
-        <div className={'listItem'} id={'listItem_'+result.id} onClick={() => handleClick(result)}>
+        <div className={`listItem nested--${props.nested}`} id={'listItem_'+result.id} onClick={() => handleClick(result)}>
           {props.currentSelection && props.currentSelection === result.id && selected ?
               <div id={'ResultCardTitle--selected'} style={selectedStyle}> </div> :
               <div className={'ResultCard'}>
@@ -89,4 +89,4 @@ function ResultCard (props) {
       </React.Fragment>
   )
 }
-export default ResultCard;
+export default _ResultCard;

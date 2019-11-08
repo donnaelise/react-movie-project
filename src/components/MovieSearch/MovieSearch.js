@@ -2,12 +2,13 @@ import React, {useState, useEffect} from 'react';
 import MovieSearchResults from "../MovieSearchResults/MovieSearchResults";
 import './MovieSearch.scss';
 import $ from "jquery";
+import _ResultCard from "../_ResultCard";
 
 
 function MovieSearch (){
-  const[query, setQuery] = useState('s');
+  const[query, setQuery] = useState('john');
   const[transitionEnded, setTransitionEnded] = useState('true');
-  const[searchFilter, setSearchFilter] = useState('movie');
+  const[searchFilter, setSearchFilter] = useState('person');
 
 
   useEffect(()=>{
@@ -81,9 +82,10 @@ function MovieSearch (){
     setSearchFilter(e.target.value);
   }
 
+
+
   return (<React.Fragment>
         <h1 className={'home__title'}>Movie Database</h1>
-
         <form id={'searchForm'} className={'searchBarToTop searchBarHome'}>
           <div className={'searchBar'}>
             <div className={'searchInput'}>
