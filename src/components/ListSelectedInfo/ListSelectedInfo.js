@@ -10,30 +10,36 @@ function ListSelectedInfo (props) {
     return str
   }
 
+  function transformGenderText(prop) {
+    if (prop === 'gender') {
+      if (obj['gender'] === 1) {
+        obj['gender'] = "Female";
+      } else if (obj['gender'] === 2) {
+        obj['gender'] = "Male";
+      }
+    }
+  }
   const exclude = ['name', 'title', 'id', 'overview'];
-
-  console.log();
 
   return(
       <React.Fragment>
-
         <dl className={'ListSelectedDescription'}>
-          { Object.keys(obj).map(function (prop) {
+          {Object.keys(obj).map(function (prop) {
             if (typeof(prop) === 'string' && !prop.includes('path') && prop !== 'known_for') {
+              transformGenderText(prop);
               if(props.preview){
                 if(!exclude.includes(prop) && obj[prop]){
                   return obj[prop].length > 60 ? ' ' :
                       <React.Fragment>
-                        <dt>{transformText(prop)}</dt>
-                        <dd>{obj[prop]}</dd>
+                          <dt>{transformText(prop)}</dt>
+                          <dd>{obj[prop]}</dd>
                       </React.Fragment>
                 }
               }
-
               else if(!props.preview){
                 return <React.Fragment>
-                  <dt>{transformText(prop)}</dt>
-                  <dd>{obj[prop]}</dd>
+                    <dt>{transformText(prop)}</dt>
+                    <dd>{obj[prop]}</dd>
                 </React.Fragment>
               }
             }

@@ -1,26 +1,16 @@
 @import "_variables.scss";
-
 .App {
   text-align: center;
   color:black;
   font-family: 'Assistant', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
+.main-content {
   background-color: rgba(18,18,18,.7);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  justify-content: space-between;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.App-link {
-  color: #09d3ac;
 }

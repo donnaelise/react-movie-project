@@ -18,4 +18,4 @@ function Button (props) {
       </React.Fragment>
   )
 }
-export default LatestMovies;
+export default Button;

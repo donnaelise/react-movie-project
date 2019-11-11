@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import './ResultCard.scss';
+import './components/MediaResultCard/MediaResultCard.scss';
 import $ from "jquery";
 import ListSelectedInfo from "../ListSelectedInfo/ListSelectedInfo";
 import ResultDetail from "../ResultDetail";

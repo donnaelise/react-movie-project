@@ -2,14 +2,11 @@ import React, {useState, useEffect} from 'react';
 import MovieSearchResults from "../MovieSearchResults/MovieSearchResults";
 import './MovieSearch.scss';
 import $ from "jquery";
-import _ResultCard from "../_ResultCard";
-
 
 function MovieSearch (){
-  const[query, setQuery] = useState('john');
+  const[query, setQuery] = useState('');
   const[transitionEnded, setTransitionEnded] = useState('true');
-  const[searchFilter, setSearchFilter] = useState('person');
-
+  const[searchFilter, setSearchFilter] = useState('movie');
 
   useEffect(()=>{
     resizeNavbar()
@@ -25,46 +22,23 @@ function MovieSearch (){
     });
   }
 
-  function handleClearSearch(e){
-    e.preventDefault();
-    setQuery('');
-    document.getElementById('searchForm').reset();
-    document.getElementById('searchForm').classList.add('center')
-  }
-
   function handleResetInput(e){
     e.preventDefault();
     setQuery('');
-    // resizeNavbar();
     document.getElementById('searchForm').reset();
     document.getElementById('searchFormInput').focus();
   }
 
   function resizeNavbar(){
-    if(query){
-      $('.home__title')
-          .css("transition","all 1s ease")
-          .css("fontSize", "1.5rem",)
-          .css("fontWeight", "500");
-      $('#searchForm')
-          .css("transition","all 1s ease")
-          .css("padding","30px 0px 0px 0px");
-      $('.searchBarHome')
-          .css("paddingTop", "0");
-      $('.searchBar')
-          .css("marginTop", "0")
-          .css("marginBottom", "0");
-      $('#filterSearch')
-          .css("transform","scale(0.8), 0.5")
-      
-    } else{
-      $('.home__title')
-          .css("transition","all 1s ease")
-          .css("fontSize", "5rem",)
-          .css("fontWeight", "200");
-      $('#searchForm')
-          .css("padding","30% 0 60% 0")
-          .css("transition","padding 1s ease")
+    if(query) {
+      $('.home__title').addClass('home__title--small');
+      $('.filterLabel').addClass('filterLabel--small')
+      $('#searchForm').addClass('searchForm--small');
+    }
+    if(!query){
+      $('.home__title').removeClass('home__title--small');
+      $('.filterLabel').removeClass('filterLabel--small')
+      $('#searchForm').removeClass('searchForm--small');
     }
   }
 
@@ -82,38 +56,35 @@ function MovieSearch (){
     setSearchFilter(e.target.value);
   }
 
-
-
   return (<React.Fragment>
         <h1 className={'home__title'}>Movie Database</h1>
-        <form id={'searchForm'} className={'searchBarToTop searchBarHome'}>
+        <form id={'searchForm'} className={'searchForm searchBarTop'}>
           <div className={'searchBar'}>
             <div className={'searchInput'}>
               <input id={'searchFormInput'} className={'searchFormInput'} type={'text'} placeholder={'search'} onFocus={onFocus} onChange={e=>handleChange(e)}/>
-              <div className={'resetInput'} onClick={handleResetInput}> 𝗫 </div>
+              <div className={'resetInput'} onClick={handleResetInput}><span className={'icon-x'}> </span> </div>
             </div>
-            <button className={'button button-search'} onClick={handleClick}>Search</button>
+            <button className={'button button-search'} onClick={handleClick}><span className="icon-search"> </span>
+              Search</button>
           </div>
-          {/*<button className={'button button-back-home'} onClick={handleClearSearch}>Back</button>*/}
           <div id={'filterSearch'}>
             <label className={'filterLabel'}>
               <input type="radio" name="filterSearch" value="movie" checked={searchFilter === 'movie'} onChange={handleRadioChange}/>
               <span className={'checkmark'}> </span> Movie
             </label>
             <label className={'filterLabel'}>
-              <input type="radio" name="filterSearch" value="tv" onChange={handleRadioChange}/>
+              <input type="radio" name="filterSearch" value="tv" checked={searchFilter === 'tv'} onChange={handleRadioChange}/>
               TV Shows
               <span className={'checkmark'}> </span>
             </label>
             <label className={'filterLabel'}>
-              <input type="radio" name="filterSearch" value="person" onChange={handleRadioChange}/>
+              <input type="radio" name="filterSearch" value="person" checked={searchFilter === 'person'} onChange={handleRadioChange}/>
               Person
               <span className={'checkmark'}> </span>
             </label>
           </div>
-
-
         </form>
+
         {query && transitionEnded?
             <section className={'searchResultsContainer'} id={'resultContainer'}>
               <h3 className={'searchTitle'}>Results for: {query}</h3>
