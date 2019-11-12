@@ -4,13 +4,18 @@ import $ from 'jquery';
 function BackgroundImages (props) {
   const latest=props.latest;
   const [results, setResults] = useState();
+  const [isLoading, setIsLoading] = useState('true');
+
 
   useEffect(()=>{
+    setIsLoading(true);
     fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=b93d00f59612e64271c924d7c3cf8264&language=en-US&page=1`)
         .then(function(response) {if (response.ok){return response.json()}})
         .then(data=>setResults(data.results))
+        .then(() => setIsLoading(false))
         .catch(e => console.log('Connection error', e))
   }, [latest]);
+
 
   function setBackgroundImage(){
     const top = `top`;

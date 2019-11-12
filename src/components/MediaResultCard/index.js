@@ -1,2 +1,2 @@
-import ResultCard from "../../ResultCard";
-export default ResultCard
+import MediaResultCard from "../MediaResultCard";
+export default MediaResultCard;

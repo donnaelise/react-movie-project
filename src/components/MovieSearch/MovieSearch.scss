@@ -2,26 +2,7 @@
 
 //--------------------general--------------------
 
-html {
-  scroll-behavior: smooth;
-  background:grey;
-}
 
-button {
-  border-radius: 5px;
-  -webkit-appearance: none;
-  font-size:1rem;
-  padding:9px 18px;
-  margin:4px;
-  border:1px black solid;
-}
-
-.center {
-  transform: translate(0%,40vh);
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-}
 
 .home__title {
   color:white;
@@ -33,40 +14,27 @@ button {
   transition: .3s ease-in-out;
 }
 
-.home__title--small {
+h1.search-active {
   padding-bottom:0;
   font-size: 1.5rem;
   font-weight: 500;
+  cursor: pointer;
   transition: .3s ease-in-out;
 }
 
-.searchForm--small {
-  margin:0;
-  padding:0;
-  transition: .3s ease-in-out;
-}
-.filterLabel--small{
-  transform: scale(0.9,0.9);
-  padding:0;
-}
+
 
 //--------------------SEARCH FORM--------------------
-
-
-.searchForm {
-  width:100vw;
-  top:0;
-  background:rgba(18,18,18,.7);
-  border-radius:10px;
-  transition:transform .4s cubic-bezier(0,.75,.42,.76);
-  padding:20px 0;
-}
 
 #searchForm {
   width:100%;
   max-width:800px;
   margin:0 auto;
-
+  top:0;
+  background:rgba(18,18,18,.7);
+  border-radius:10px;
+  transition:transform .4s ease-in-out;
+  padding:20px 0;
   .searchBar {
     display:flex;
     justify-content: space-around;
@@ -80,16 +48,6 @@ button {
     flex-basis:30%;
     border:none;
   }
-
-  .button-search-red {
-    background-color: red;
-    color:white;
-    cursor: pointer;
-    float:right;
-    flex-basis:30%;
-    border:none;
-  }
-
   //--------------------radio buttons--------------------
   #filterSearch {
     padding-top:20px;
@@ -152,7 +110,46 @@ button {
   }
 }
 
+
+#searchForm.search-active #filterSearch {
+  padding-top:0;
+  transition: .3s ease-in-out;
+}
+
+.search-active .filterLabel {
+  transform: scale(0.9,0.9);
+  padding:0;
+  transition: .3s ease-in-out;
+}
+
+#searchForm.search-active {
+  padding:0;
+  transition: .3s ease-in-out;
+}
+
+
 //--------------------search bar--------------------
+
+label[for=searchInput]{
+  //position:absolute;
+  color:black;
+  font-size:1rem;
+  width:100%;
+  float:left;
+  display:inline-block;
+  margin-left:13px;
+  padding:0 10px;
+}
+
+.searchField input:placeholder-shown ~ label{
+  //display:none;
+}
+
+.searchField {
+  display:inline-block;
+  width:100%;
+  text-align: left;
+}
 .searchInput {
   margin: 5px auto;
   padding:4px 0;
@@ -164,7 +161,7 @@ button {
   align-items: center;
 
   input.searchFormInput {
-    flex-basis:100%;
+    width:100%;
     font-size:1rem;
     padding:5px 10px;
     border-style: none;
@@ -202,6 +199,8 @@ button {
   top: 0;
   margin: 0 auto;
   overflow: scroll;
+
+  transition: height 3s ease-in-out;
 }
 
 .listResults {

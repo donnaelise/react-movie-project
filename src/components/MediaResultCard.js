@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import $ from "jquery";
 import ListSelectedInfo from "./ListSelectedInfo/ListSelectedInfo";
 import ResultDetail from "./ResultDetail";
 import './MediaResultCard/MediaResultCard.scss'
 import './ResultDetail/ResultDetail.scss'
+import $ from "jquery";
 
 function MediaResultCard (props) {
   const result = props.result;
@@ -12,7 +12,9 @@ function MediaResultCard (props) {
 
   useEffect(() => {
         setListPoster();
-        window.scrollTo($('#listItem_' + props.currentSelection).position())
+        if(props.nested === false){
+          window.scrollTo($('#listItem_' + props.currentSelection).position())
+        }
       }, [result, selected]
   );
 
@@ -24,6 +26,7 @@ function MediaResultCard (props) {
     } else if (!selected) {
       setSelected(true)
     }
+    // window.scrollTo($('#listItem_' + props.currentSelection).position())
   }
 
   function setListPoster(){

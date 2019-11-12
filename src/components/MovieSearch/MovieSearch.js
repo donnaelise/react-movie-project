@@ -2,21 +2,40 @@ import React, {useState, useEffect} from 'react';
 import MovieSearchResults from "../MovieSearchResults/MovieSearchResults";
 import './MovieSearch.scss';
 import $ from "jquery";
+import MediaResultCard from "../MediaResultCard";
+import MediaTypeFilter from "../MediaTypeFilter/MediaTypeFilter";
 
 function MovieSearch (){
   const[query, setQuery] = useState('');
   const[transitionEnded, setTransitionEnded] = useState('true');
   const[searchFilter, setSearchFilter] = useState('movie');
+  const[searchActive, setSearchActive] = useState(false);
+
+  const filterOptions = [
+    {
+      label: 'Movie',
+      value: 'movie'
+    },
+    {
+      label: 'TV Show',
+      value: 'tv'
+    },
+    {
+      label: 'Person',
+      value: 'person'
+    }
+  ];
 
   useEffect(()=>{
-    resizeNavbar()
+    if(!query) {
+      setSearchActive(false);
+    } else {
+      setSearchActive(true);
+    }
   }, [query]);
 
   function handleChange(e){
     setQuery(e.target.value);
-    document.body.style.backgroundImage = `none`;
-    document.getElementById('searchForm').classList.remove('center');
-    document.getElementById('searchForm').classList.add('searchBarToTop');
     document.getElementById('searchForm').addEventListener('transitionend', () => {
       setTransitionEnded(true);
     });
@@ -25,21 +44,7 @@ function MovieSearch (){
   function handleResetInput(e){
     e.preventDefault();
     setQuery('');
-    document.getElementById('searchForm').reset();
     document.getElementById('searchFormInput').focus();
-  }
-
-  function resizeNavbar(){
-    if(query) {
-      $('.home__title').addClass('home__title--small');
-      $('.filterLabel').addClass('filterLabel--small')
-      $('#searchForm').addClass('searchForm--small');
-    }
-    if(!query){
-      $('.home__title').removeClass('home__title--small');
-      $('.filterLabel').removeClass('filterLabel--small')
-      $('#searchForm').removeClass('searchForm--small');
-    }
   }
 
   function handleClick(e){
@@ -56,42 +61,38 @@ function MovieSearch (){
     setSearchFilter(e.target.value);
   }
 
-  return (<React.Fragment>
-        <h1 className={'home__title'}>Movie Database</h1>
-        <form id={'searchForm'} className={'searchForm searchBarTop'}>
+  function checkIfResults(){
+    if($('.listResults li').length < 1){
+      $('.searchTitle').text(`No results for "${query}".`);
+    }
+    if($('.listResults li').length >= 1){
+      $('.searchTitle').text(`Results for "${query}"`);
+    }
+  }
+
+  return (
+      <React.Fragment>
+        <h1 className={'home__title' + ((searchActive) ? ' search-active' : '')} onClick={handleResetInput}>Movie Database</h1>
+        <form id={'searchForm'} className={((searchActive) ? ' search-active' : '') }>
           <div className={'searchBar'}>
             <div className={'searchInput'}>
-              <input id={'searchFormInput'} className={'searchFormInput'} type={'text'} placeholder={'search'} onFocus={onFocus} onChange={e=>handleChange(e)}/>
+              <div className={'searchField'}>
+                <input id={'searchFormInput'} name={"searchInput"} className={'searchFormInput'} type="text" placeholder={`Search for a ${searchFilter}`} value={query} onFocus={onFocus} onChange={e=>handleChange(e)}></input>
+                <label htmlFor={'searchInput'}>Search for a {searchFilter ? searchFilter : 'movie, tv show or actor' }
+                </label>
+              </div>
               <div className={'resetInput'} onClick={handleResetInput}><span className={'icon-x'}> </span> </div>
             </div>
-            <button className={'button button-search'} onClick={handleClick}><span className="icon-search"> </span>
-              Search</button>
+            <button className={'button button-search'} onClick={handleClick}><span className="icon-search"> </span>Search</button>
           </div>
-          <div id={'filterSearch'}>
-            <label className={'filterLabel'}>
-              <input type="radio" name="filterSearch" value="movie" checked={searchFilter === 'movie'} onChange={handleRadioChange}/>
-              <span className={'checkmark'}> </span> Movie
-            </label>
-            <label className={'filterLabel'}>
-              <input type="radio" name="filterSearch" value="tv" checked={searchFilter === 'tv'} onChange={handleRadioChange}/>
-              TV Shows
-              <span className={'checkmark'}> </span>
-            </label>
-            <label className={'filterLabel'}>
-              <input type="radio" name="filterSearch" value="person" checked={searchFilter === 'person'} onChange={handleRadioChange}/>
-              Person
-              <span className={'checkmark'}> </span>
-            </label>
-          </div>
+          <MediaTypeFilter options={filterOptions} onChange={handleRadioChange} currentSelection={searchFilter}/>
         </form>
 
+        {checkIfResults()}
         {query && transitionEnded?
             <section className={'searchResultsContainer'} id={'resultContainer'}>
-              <h3 className={'searchTitle'}>Results for: {query}</h3>
-              <MovieSearchResults
-                  searchquery={query}
-                  searchFilter={searchFilter}
-              />
+              <h3 className={'searchTitle'}></h3>
+              <MovieSearchResults searchquery={query} searchFilter={searchFilter}/>
             </section> : ''}
       </React.Fragment>
   )

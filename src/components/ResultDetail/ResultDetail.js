@@ -1,9 +1,9 @@
 import React from 'react';
-import '../MediaResultCard/MediaResultCard.scss'
 import Trailer from "../Trailer/index";
 import NYTimesReviews from "../NYTimesReviews";
-import ListSelectedInfo from "../ListSelectedInfo/ListSelectedInfo";
+import ListSelectedInfo from "../ListSelectedInfo";
 import MediaResultCard from "../MediaResultCard";
+import '../MediaResultCard/MediaResultCard.scss'
 import './ResultDetail.scss'
 
 function ResultDetail (props) {
