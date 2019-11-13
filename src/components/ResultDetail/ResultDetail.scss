@@ -1,0 +1,51 @@
+.movieSelected {
+  padding:5px;
+  flex-wrap: wrap;
+  display:flex;
+  flex-direction: column;
+  text-align: left;
+  font-size:.8rem;
+  &-info {
+    align-items:start;
+    flex-direction: row;
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .profileImg {
+      width:10rem;
+      margin:0 2% 15px 5%;
+    }
+    h2 {
+      margin: .5rem 0;
+    }
+    img {
+      max-width:35%;
+      border-radius:5px;
+    }
+  }
+}
+dl {
+  margin-left:0;
+  margin-bottom:0;
+  dd {
+    margin-bottom:10px;
+  }
+  dt {
+    margin:0;
+    text-align: left;
+    font-weight: bold;
+    float:left;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .ResultDetailContainer {
+    .ListSelectedDescription {
+      width: 64%;
+      order: 1;
+    }
+    .profileImg {
+      order: 2;
+      margin-bottom: 0;
+    }
+  }
+}

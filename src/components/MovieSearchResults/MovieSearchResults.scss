@@ -1,0 +1,36 @@
+@import "../../_variables.scss";
+
+.listResults {
+  max-width:800px;
+  width:100%;
+  margin:0 auto;
+  li {
+    transition:height 3s;
+    position:relative;
+    background-color: rgba(255,255,255,.8);
+    color:black;
+    border-radius:10px;
+    margin:10px;
+  }
+  hr {
+    border:.5px solid black;
+    width:90%;
+  }
+}
+
+
+.Loader {
+  border: 3px solid white;
+  border-radius: 50%;
+  border-top: 3px solid $green;
+  width: 30px;
+  height: 30px;
+  margin-bottom:30px;
+  -webkit-animation: spin 1s linear infinite; /* Safari */
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

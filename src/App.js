@@ -1,26 +1,18 @@
 import React from 'react';
-
-import './App.css';
-import Form from "./Form";
-import Search from "./Search";
-import MovieResultCard from "./MovieResultCard";
-import FetchMovieData from "./fetchOMDB";
-import CounterClass from "./HooksEx";
-import CounterHooks from "./HooksFunction";
-import Clicker from "./Clicker";
-import SWMovies from "./Swapi";
-import MovieData from "./MovieData";
+import './App.scss';
+import MovieSearch from "./components/MovieSearch";
+import BackgroundImages from "./components/BackgroundImages";
+import '../src/assets/icomoon.css'
 
 function App() {
   return (
       <div className="App">
-        {/*<SWMovies/>*/}
-        {/*<Clicker />*/}
         <header className="App-header">
-          <Form />
-
+          <BackgroundImages latest={'latest'}/>
         </header>
-        {/*<Search />*/}
+        <section className={'main-content'} >
+          <MovieSearch />
+        </section>
       </div>
   )
 }
