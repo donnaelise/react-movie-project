@@ -138,21 +138,22 @@ label[for=searchInput]{
   font-size:1rem;
   width:100%;
   float:left;
-  opacity:0;
   margin-left:13px;
   padding:0 10px;
   position:absolute;
-  top:-2px;
+  top:calc(50% - 0.5rem);
+  color:gray;
   height:0;
-  transition: top 0.3s ease, opacity 0.3s ease;
+  transition: all 0.5s ease;
 }
 
 .searchField input:focus ~ label, .searchField input:valid ~ label{
   opacity:1;
   color:black;
-  top:-2px;
+  top:0px;
   height:1rem;
-  transition: top 0.1s ease, opacity 1.7s ease;
+  font-size:.9rem;
+  transition: all 0.5s ease;
 }
 
 
@@ -161,7 +162,7 @@ label[for=searchInput]{
   width:100%;
   text-align: left;
   position:relative;
-  height:3rem;
+  //height:3rem;
 
 }
 .searchInput {
@@ -177,7 +178,7 @@ label[for=searchInput]{
   input.searchFormInput {
     width:95%;
     font-size:1rem;
-    padding:5px 10px;
+    padding:30px 0 5px 10px;
     border-style: none;
     margin-left:13px;
     &:focus{
@@ -190,6 +191,7 @@ label[for=searchInput]{
   .resetInput {
     color: #282c34;
     padding:0 10px 0 15px;
+    width:5%;
     cursor: pointer;
   }
 }
