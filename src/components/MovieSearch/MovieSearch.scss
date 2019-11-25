@@ -142,6 +142,7 @@ label[for=searchInput]{
   padding:0 10px;
   position:absolute;
   top:calc(50% - 0.5rem);
+  left:0px;
   color:gray;
   height:0;
   transition: all 0.5s ease;
@@ -151,6 +152,7 @@ label[for=searchInput]{
   opacity:1;
   color:black;
   top:0px;
+  left:0px;
   height:1rem;
   font-size:.9rem;
   transition: all 0.5s ease;
