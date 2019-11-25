@@ -26,7 +26,7 @@ h1.search-active {
 
 //--------------------SEARCH FORM--------------------
 
-#searchForm {
+.searchForm {
   width:100%;
   max-width:800px;
   margin:0 auto;
@@ -63,7 +63,10 @@ h1.search-active {
       font-size: 22px;
     }
     input[type=radio] {
+      opacity: 0;
       -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
       margin-right:30px;
     }
 
@@ -111,7 +114,7 @@ h1.search-active {
 }
 
 
-#searchForm.search-active #filterSearch {
+.searchForm.search-active #filterSearch {
   padding-top:0;
   transition: .3s ease-in-out;
 }
@@ -122,7 +125,7 @@ h1.search-active {
   transition: .3s ease-in-out;
 }
 
-#searchForm.search-active {
+.searchForm.search-active {
   padding:0;
   transition: .3s ease-in-out;
 }
@@ -131,28 +134,39 @@ h1.search-active {
 //--------------------search bar--------------------
 
 label[for=searchInput]{
-  //position:absolute;
   color:black;
   font-size:1rem;
   width:100%;
   float:left;
-  display:inline-block;
+  opacity:0;
   margin-left:13px;
   padding:0 10px;
+  position:absolute;
+  top:-2px;
+  height:0;
+  transition: top 0.3s ease, opacity 0.3s ease;
 }
 
-.searchField input:placeholder-shown ~ label{
-  //display:none;
+.searchField input:focus ~ label, .searchField input:valid ~ label{
+  opacity:1;
+  color:black;
+  top:-2px;
+  height:1rem;
+  transition: top 0.1s ease, opacity 1.7s ease;
 }
+
 
 .searchField {
-  display:inline-block;
+  //display:inline-block;
   width:100%;
   text-align: left;
+  position:relative;
+  height:3rem;
+
 }
 .searchInput {
   margin: 5px auto;
-  padding:4px 0;
+  padding-top:4px;
   border-radius: 5px;
   background-color: white;
   display:flex;
@@ -161,7 +175,7 @@ label[for=searchInput]{
   align-items: center;
 
   input.searchFormInput {
-    width:100%;
+    width:95%;
     font-size:1rem;
     padding:5px 10px;
     border-style: none;
@@ -190,6 +204,8 @@ label[for=searchInput]{
 .searchResultsContainer {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  flex-direction: column;
   justify-content: center;
   color: black;
   background-color: rgba(255, 255, 255, 0.9);

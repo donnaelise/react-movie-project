@@ -20,13 +20,13 @@ function MediaResultCard (props) {
 
   function handleClick(val){
     setSelected(true);
-    handleSelection(val);
+    handleCardSelection(val);
+
     if (selected) {
       setSelected(false)
     } else if (!selected) {
       setSelected(true)
     }
-    // window.scrollTo($('#listItem_' + props.currentSelection).position())
   }
 
   function setListPoster(){
@@ -38,7 +38,7 @@ function MediaResultCard (props) {
     }
   }
 
-  function handleSelection(val){
+  function handleCardSelection(val){
     if(props.selection){
       props.selection(val.id);
     }

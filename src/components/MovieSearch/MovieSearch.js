@@ -1,15 +1,18 @@
 import React, {useState, useEffect} from 'react';
 import MovieSearchResults from "../MovieSearchResults/MovieSearchResults";
 import './MovieSearch.scss';
-import $ from "jquery";
+import getMovieData from "../utilities/movieApiSearch";
+import { H1, H2 } from '../ui-library/Headings'
 import MediaResultCard from "../MediaResultCard";
 import MediaTypeFilter from "../MediaTypeFilter/MediaTypeFilter";
 
 function MovieSearch (){
-  const[query, setQuery] = useState('');
-  const[transitionEnded, setTransitionEnded] = useState('true');
-  const[searchFilter, setSearchFilter] = useState('movie');
-  const[searchActive, setSearchActive] = useState(false);
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState(null);
+  const [searchFilter, setSearchFilter] = useState('movie');
+  const [hasResults, setHasResults] = useState(false);
+
+  const minQueryLength = 3;
 
   const filterOptions = [
     {
@@ -26,22 +29,28 @@ function MovieSearch (){
     }
   ];
 
-  useEffect(()=>{
-    if(!query) {
-      setSearchActive(false);
-    } else {
-      setSearchActive(true);
+  function search(query) {
+    if (query.length < minQueryLength) {
+      setResults(null);
+      setHasResults(false);
+      return;
     }
-  }, [query]);
+
+    if (results == null) {
+      setHasResults(false);
+    }
+    getMovieData(query).then(({results}) => {
+      setResults(results);
+      setHasResults(true);
+    })
+  }
 
   function handleChange(e){
     setQuery(e.target.value);
-    document.getElementById('searchForm').addEventListener('transitionend', () => {
-      setTransitionEnded(true);
-    });
+    search(query);
   }
 
-  function handleResetInput(e){
+  function handleClearSearch(e){
     e.preventDefault();
     setQuery('');
     document.getElementById('searchFormInput').focus();
@@ -49,53 +58,61 @@ function MovieSearch (){
 
   function handleClick(e){
     e.preventDefault();
-    if(document.getElementById('searchForm').classList.contains('center')) {
-      setTransitionEnded(false)
-    }
   }
 
-  function onFocus(event){
-    event.placeholder = '';
-  }
   function handleRadioChange(e){
     setSearchFilter(e.target.value);
   }
 
-  function checkIfResults(){
-    if($('.listResults li').length < 1){
-      $('.searchTitle').text(`No results for "${query}".`);
+
+  const resultCards = () => {
+    if (results) {
+      return results.map((result) =>
+          <MediaResultCard key={result.id} result={result} />
+      )
     }
-    if($('.listResults li').length >= 1){
-      $('.searchTitle').text(`Results for "${query}"`);
-    }
-  }
+  };
+
 
   return (
       <React.Fragment>
-        <h1 className={'home__title' + ((searchActive) ? ' search-active' : '')} onClick={handleResetInput}>Movie Database</h1>
-        <form id={'searchForm'} className={((searchActive) ? ' search-active' : '') }>
+        {/*<H1 content={"Movie Database"}/>*/}
+        <h1 className={'home__title' + (hasResults ? ' search-active' : '')}>Movie Database</h1>
+        <form className={'searchForm' + (hasResults ? ' search-active' : '') }>
           <div className={'searchBar'}>
             <div className={'searchInput'}>
               <div className={'searchField'}>
-                <input id={'searchFormInput'} name={"searchInput"} className={'searchFormInput'} type="text" placeholder={`Search for a ${searchFilter}`} value={query} onFocus={onFocus} onChange={e=>handleChange(e)}></input>
-                <label htmlFor={'searchInput'}>Search for a {searchFilter ? searchFilter : 'movie, tv show or actor' }
-                </label>
+                <input id={'searchFormInput'}
+                       name={"searchInput"}
+                       className={'searchFormInput'}
+                       type="text"
+                       placeholder={`Search for a ${searchFilter}`}
+                       value={query}
+                       onChange={e=>handleChange(e)}
+                       required
+                />
+                <label htmlFor={'searchInput'}>Search for a {searchFilter ? searchFilter : 'movie, tv show or actor' }</label>
               </div>
-              <div className={'resetInput'} onClick={handleResetInput}><span className={'icon-x'}> </span> </div>
+              <a className={'resetInput'} onClick={handleClearSearch}><span className={'icon-x'}> </span> </a>
             </div>
             <button className={'button button-search'} onClick={handleClick}><span className="icon-search"> </span>Search</button>
           </div>
           <MediaTypeFilter options={filterOptions} onChange={handleRadioChange} currentSelection={searchFilter}/>
         </form>
 
-        {checkIfResults()}
-        {query && transitionEnded?
+        {query ?
             <section className={'searchResultsContainer'} id={'resultContainer'}>
               <h3 className={'searchTitle'}></h3>
-              <MovieSearchResults searchquery={query} searchFilter={searchFilter}/>
+              <H2 className={'searchTitle'} content={(hasResults) ? "Results for: " + query : "No results found"} />
+
+              {(hasResults) ? <MovieSearchResults searchquery={query} searchFilter={searchFilter}/> : ''}
+
             </section> : ''}
+
       </React.Fragment>
   )
 }
+
+
 
 export default MovieSearch;

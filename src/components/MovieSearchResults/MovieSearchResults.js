@@ -30,18 +30,16 @@ function MovieSearchResults(props) {
             .then(()=>setNewResult(newResultArray))
             .catch(err => console.log('ERROR:', err));
 
-
       }, [props.searchquery, props.searchFilter]
   );
 
   if(isLoading){
-    $('.Loader').css('display','block');
+    // $('.Loader').css('display','block');
     $('.listResults').css('display','none')
   }
   if(!isLoading){
-    $('.Loader').css('display','none');
+    // $('.Loader').css('display','none');
     $('.listResults').css('display','block')
-
   }
 
   if(props.searchFilter === 'tv') {
@@ -99,7 +97,7 @@ function MovieSearchResults(props) {
 
   return(
       <React.Fragment>
-        <div className={'Loader'}>  </div>
+        {isLoading ? <div className={'Loader'}>  </div> : ''}
         {displayData()}
         <ul className={'listResults'}>
           {newResult ? newResult.map(result=>

@@ -30,7 +30,7 @@ function ListSelectedInfo (props) {
               if(props.preview){
                 if(!exclude.includes(prop) && obj[prop]){
                   return obj[prop].length > 60 ? ' ' :
-                      <React.Fragment>
+                      <React.Fragment key={obj[prop]}>
                           <dt>{transformText(prop)}</dt>
                           <dd>{obj[prop]}</dd>
                       </React.Fragment>
