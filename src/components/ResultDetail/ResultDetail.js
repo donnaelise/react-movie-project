@@ -25,7 +25,7 @@ function ResultDetail (props) {
                     {known_for_movies.map( e => <MediaResultCard result={e} currentSelection={result.id} nested={true}/>) }
                   </React.Fragment>
                   : ''}
-              <NYTimesReviews title={result.title ? result.title : result.name} />
+              {props.mediaType!=='person' ? <NYTimesReviews title={result.title ? result.title : result.name} /> : ''}
               <Trailer imdbID={result.id}/>
             </div>
             :''}

@@ -86,12 +86,12 @@ function MovieSearch (){
                        name={"searchInput"}
                        className={'searchFormInput'}
                        type="text"
-                       // placeholder={`Search for a ${searchFilter}`}
+                    // placeholder={`Search for a ${searchFilter}`}
                        value={query}
                        onChange={e=>handleChange(e)}
                        required
                 />
-                <label htmlFor={'searchInput'} onClick={()=>document.getElementById('searchFormInput').focus()}>Search for a {searchFilter ? searchFilter : 'movie, tv show or actor' }</label>
+                <label htmlFor={'searchFormInput'}>Search for a {searchFilter === 'tv' ? 'tv show' : searchFilter}</label>
               </div>
               <a className={'resetInput'} onClick={handleClearSearch}><span className={'icon-x'}> </span> </a>
             </div>
@@ -102,7 +102,6 @@ function MovieSearch (){
 
         {query ?
             <section className={'searchResultsContainer'} id={'resultContainer'}>
-              <h3 className={'searchTitle'}></h3>
               <H2 className={'searchTitle'} content={(hasResults) ? "Results for: " + query : "No results found"} />
 
               {(hasResults) ? <MovieSearchResults searchquery={query} searchFilter={searchFilter}/> : ''}

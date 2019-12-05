@@ -133,7 +133,7 @@ h1.search-active {
 
 //--------------------search bar--------------------
 
-label[for=searchInput]{
+.searchField label{
   color:black;
   font-size:1rem;
   width:100%;
@@ -141,7 +141,7 @@ label[for=searchInput]{
   margin-left:13px;
   padding:0 10px;
   position:absolute;
-  top:calc(50% - 0.5rem);
+  top:calc(50% - 10.5px);
   left:0px;
   color:gray;
   height:0;
@@ -169,7 +169,6 @@ label[for=searchInput]{
 }
 .searchInput {
   margin: 5px auto;
-  padding-top:4px;
   border-radius: 5px;
   background-color: white;
   display:flex;
