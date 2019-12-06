@@ -5,9 +5,9 @@
 
 
 .home__title {
-  color:black;
-  text-shadow: 1px 1px 10px white;
-  font-weight:300;
+color:white;
+  text-shadow: 3px 5px 10px black;
+font-weight:300;
   font-size:3.5rem;
   margin:0;
   text-align: center;
@@ -220,7 +220,7 @@ h1.search-active {
   top: 0;
   margin: 0 auto;
   overflow: scroll;
-border-radius: 10px 10px 0 0;
+  border-radius: 10px 10px 0 0;
   transition: height 3s ease-in-out;
 }
 
