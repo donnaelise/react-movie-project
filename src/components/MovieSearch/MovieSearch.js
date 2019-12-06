@@ -6,11 +6,12 @@ import { H1, H2 } from '../ui-library/Headings'
 import MediaResultCard from "../MediaResultCard";
 import MediaTypeFilter from "../MediaTypeFilter/MediaTypeFilter";
 
-function MovieSearch (){
+function MovieSearch () {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState(null);
   const [searchFilter, setSearchFilter] = useState('movie');
   const [hasResults, setHasResults] = useState(false);
+  const [inputFocus, setInputFocus] = useState(false);
 
   const minQueryLength = 3;
 
@@ -28,6 +29,7 @@ function MovieSearch (){
       value: 'person'
     }
   ];
+
 
   function search(query) {
     if (query.length < minQueryLength) {
@@ -64,7 +66,6 @@ function MovieSearch (){
     setSearchFilter(e.target.value);
   }
 
-
   const resultCards = () => {
     if (results) {
       return results.map((result) =>
@@ -73,12 +74,10 @@ function MovieSearch (){
     }
   };
 
-
   return (
       <React.Fragment>
-        {/*<H1 content={"Movie Database"}/>*/}
-        <h1 className={'home__title' + (hasResults ? ' search-active' : '')}>Movie Database</h1>
-        <form className={'searchForm' + (hasResults ? ' search-active' : '') }>
+        <h1 className={'home__title' + (inputFocus ? ' search-active' : '')}>Movie Database</h1>
+        <form className={'searchForm' + (inputFocus ? ' search-active' : '') }>
           <div className={'searchBar'}>
             <div className={'searchInput'}>
               <div className={'searchField'}>
@@ -86,8 +85,9 @@ function MovieSearch (){
                        name={"searchInput"}
                        className={'searchFormInput'}
                        type="text"
-                    // placeholder={`Search for a ${searchFilter}`}
                        value={query}
+                       onFocus={()=>setInputFocus('true')}
+                       onBlur={()=>setInputFocus('false')}
                        onChange={e=>handleChange(e)}
                        required
                 />
