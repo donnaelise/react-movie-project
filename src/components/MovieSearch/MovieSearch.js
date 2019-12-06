@@ -74,12 +74,16 @@ function MovieSearch () {
     }
   };
 
-  function handleInputFocus(){
-    setInputFocus('true')
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    })
+  function handleInputFocus(setFocus){
+    if(setFocus){
+      setInputFocus(true)
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
+    } else if (query.length === 0 ) {
+      setInputFocus(false)
+    }
   }
   return (
       <React.Fragment>
@@ -93,9 +97,8 @@ function MovieSearch () {
                        className={'searchFormInput'}
                        type="text"
                        value={query}
-                       onFocus={()=>setInputFocus('true')}
-                       onFocus={handleInputFocus}
-                       onBlur={()=>setInputFocus('false')}
+                       onFocus={()=>handleInputFocus(true)}
+                       onBlur={()=>handleInputFocus(false)}
                        onChange={e=>handleChange(e)}
                        required
                 />

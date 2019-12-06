@@ -37,7 +37,7 @@ function ListSelectedInfo (props) {
                 }
               }
               else if(!props.preview){
-                return <React.Fragment>
+                return <React.Fragment key={obj[prop]}>
                     <dt>{transformText(prop)}</dt>
                     <dd>{obj[prop]}</dd>
                 </React.Fragment>

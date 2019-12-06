@@ -32,7 +32,6 @@ function NYTimesReviews (props) {
               </a>
             </div> : ''}
 
-        {/*<p>{linkText.suggested_link_text}</p>*/}
       </React.Fragment>
   )
 }
