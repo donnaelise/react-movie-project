@@ -74,6 +74,13 @@ function MovieSearch () {
     }
   };
 
+  function handleInputFocus(){
+    setInputFocus('true')
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }
   return (
       <React.Fragment>
         <h1 className={'home__title' + (inputFocus ? ' search-active' : '')}>Movie Database</h1>
@@ -87,6 +94,7 @@ function MovieSearch () {
                        type="text"
                        value={query}
                        onFocus={()=>setInputFocus('true')}
+                       onFocus={handleInputFocus}
                        onBlur={()=>setInputFocus('false')}
                        onChange={e=>handleChange(e)}
                        required
