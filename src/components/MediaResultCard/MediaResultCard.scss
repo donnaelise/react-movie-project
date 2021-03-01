@@ -1,88 +1,80 @@
 //--------------------RESULT CARD --------------------
-
 .listItem {
-  position:relative;
-  width:100%;
-
-  .ResultCard {
-    display:flex;
-    width:100%;
-    max-width:800px;
-    min-height:25%;
-    border-radius:10px;
-
-    .listInfo {
-      margin-left:15px;
-    }
-  }
-
-  .imageContainer {
-    flex: 0 0 auto;
     position: relative;
-    width:25%;
-
-    .listPoster {
-      border-radius:10px 0 0 10px;
-      width:100%;
-      height:100%;
-      overflow:hidden;
-      position:absolute;
-      object-fit:cover;
+    width: 100%;
+    .ResultCard {
+        border-radius: 10px;
+        display: flex;
+        max-width: 800px;
+        min-height: 25%;
+        width: 100%;
+        .listInfo {
+            margin-left: 15px;
+        }
     }
-  }
-
-  #ResultCardTitle--selected {
-    margin-right:20px;
-    cursor:pointer;
-    padding: 0 10px;
-    align-items: flex-end;
-    h2 {
-      text-align: center;
-      width: 100%;
+    .imageContainer {
+        flex: 0 0 auto;
+        position: relative;
+        width: 25%;
+        .listPoster {
+            border-radius: 10px 0 0 10px;
+            height: 100%;
+            object-fit: cover;
+            overflow: hidden;
+            position: absolute;
+            width: 100%;
+        }
     }
-    span {
-      float: right;
+    #ResultCardTitle--selected {
+        align-items: flex-end;
+        cursor: pointer;
+        margin-right: 20px;
+        padding: 0 10px;
+        h2 {
+            text-align: center;
+            width: 100%;
+        }
+        span {
+            float: right;
+        }
     }
-  }
 }
 
 //--------------------RESULT DETAIL LIST --------------------
-
 .ResultDetailContainer .listItem {
-  margin:10px auto;
+    margin: 10px auto;
 }
 
 .listItem .ResultCard {
-  box-shadow: 0 4px 5px 2px darkgrey;
-  cursor: pointer;
+    box-shadow: 0 4px 5px 2px darkgrey;
+    cursor: pointer;
 }
 
 .ResultDetailContainer {
-  width:100%;
-  padding:10px;
-  margin: 0 8px 25px 8px;
+    padding: 10px;
+    margin: 0 8px 25px 8px;
+    width: 100%;
 }
 
 dl {
-  margin:0;
-
-  dd {
-    margin-left:8rem;
-    margin-bottom:5px;
-    padding-left:10px;
-  }
-  dt {
-    margin:0;
-    text-align: left;
-    font-weight: bold;
-    float:left;
-  }
+    margin: 0;
+    dd {
+        margin-bottom: 5px;
+        margin-left: 8rem;
+        padding-left: 10px;
+    }
+    dt {
+        float: left;
+        font-weight: bold;
+        margin: 0;
+        text-align: left;
+    }
 }
 
-.ResultDetailContainer > .ResultDetailContainer {
-  width:90%;
-  margin:20px auto;
-  padding:0 15px;
-  border-left: .5px solid black;
-  border-right: .5px solid black;
+.ResultDetailContainer>.ResultDetailContainer {
+    border-left: .5px solid black;
+    border-right: .5px solid black;
+    margin: 20px auto;
+    padding: 0 15px;
+    width: 90%;
 }

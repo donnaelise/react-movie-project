@@ -1,51 +1,53 @@
 .movieSelected {
-  padding:5px;
-  flex-wrap: wrap;
-  display:flex;
-  flex-direction: column;
-  text-align: left;
-  font-size:.8rem;
-  &-info {
-    align-items:start;
-    flex-direction: row;
-    display:flex;
-    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
-    .profileImg {
-      width:10rem;
-      margin:0 2% 15px 5%;
-    }
-    h2 {
-      margin: .5rem 0;
-    }
-    img {
-      max-width:35%;
-      border-radius:5px;
-    }
-  }
-}
-dl {
-  margin-left:0;
-  margin-bottom:0;
-  dd {
-    margin-bottom:10px;
-  }
-  dt {
-    margin:0;
+    font-size: .8rem;
+    padding: 5px;
     text-align: left;
-    font-weight: bold;
-    float:left;
-  }
+    &-info {
+        align-items: start;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        .profileImg {
+            margin: 0 2% 15px 5%;
+            width: 10rem;
+        }
+        h2 {
+            margin: .5rem 0;
+        }
+        img {
+            border-radius: 5px;
+            max-width: 35%;
+        }
+    }
 }
+
+dl {
+    margin-bottom: 0;
+    margin-left: 0;
+    dd {
+        margin-bottom: 10px;
+    }
+    dt {
+        font-weight: bold;
+        float: left;
+        margin: 0;
+        text-align: left;
+    }
+}
+
 @media only screen and (min-width: 600px) {
-  .ResultDetailContainer {
-    .ListSelectedDescription {
-      width: 64%;
-      order: 1;
+    .ResultDetailContainer {
+        .ListSelectedDescription {
+            order: 1;
+            width: 64%;
+        }
+        .profileImg {
+            margin-bottom: 0;
+            order: 2;
+        }
     }
-    .profileImg {
-      order: 2;
-      margin-bottom: 0;
-    }
-  }
 }
