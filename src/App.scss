@@ -1,41 +1,41 @@
 @import "_variables.scss";
 .App {
-  text-align: center;
-  color:black;
-  font-family: 'Assistant', sans-serif;
+    text-align: center;
+    color: black;
+    font-family: 'Assistant', sans-serif;
 }
 
 .main-content {
-  background-color: rgba(233,237,238,.2);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: rgba(0, 0, 0, .5);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
 
 html {
-  scroll-behavior: smooth;
-  background:grey;
+    scroll-behavior: smooth;
+    background: grey;
 }
 
 button {
-  border-radius: 5px;
-  -webkit-appearance: none;
-  font-size:1rem;
-  padding:9px 18px;
-  margin:4px;
-  border:1px black solid;
+    border-radius: 5px;
+    -webkit-appearance: none;
+    font-size: 1rem;
+    padding: 9px 18px;
+    margin: 4px;
+    border: 1px black solid;
 }
 
 .center {
-  transform: translate(0%,40vh);
-  justify-content: center;
-  align-items: center;
-  position: absolute;
+    transform: translate(0%, 40vh);
+    justify-content: center;
+    align-items: center;
+    position: absolute;
 }
 
 .hidden {
-  display:none;
+    display: none;
 }

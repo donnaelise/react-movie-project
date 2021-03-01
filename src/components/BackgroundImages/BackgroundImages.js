@@ -17,7 +17,7 @@ function BackgroundImages (props) {
   }, [latest]);
 
 
-  function setBackgroundImage(){
+  function setBackgroundImageMobile(){
     const top = `top`;
     const bottom = `top calc(200vw)`;
     const v_center_top = `top calc(50vw)`;
@@ -43,6 +43,37 @@ function BackgroundImages (props) {
       for (let j = 0; j < 3; j++) {
         poster++;
         BackgroundImgs.push(`no-repeat ${vertical[i]} ${horizontal[j]} fixed url("http://image.tmdb.org/t/p/w500/${LatestMoviesImages[poster]}")`)
+      }
+    }
+
+    BackgroundImgs = BackgroundImgs.toString();
+    $('.App').css("background", BackgroundImgs);
+    document.body.style.backgroundImage = "url=('http://image.tmdb.org/t/p/w185/ePXuKdXZuJx8hHMNr2yM4jY2L7Z.jpg')";
+  }
+
+  function setBackgroundImage(){
+    const left = `0%`;
+    const left_center = `33.33%`;
+    const right_center = `66.67%`;
+    const right = `100%`;
+
+    let LatestMoviesImages = [];
+    let BackgroundImgs = [];
+
+    if (results){
+      results.map(function(e){
+        LatestMoviesImages.push(e.poster_path)
+      })
+    }
+
+    const horizontal = [left, right, left_center, right_center];
+    const vertical = [`0%`, `36vw`, `72vw`, `108vw`, `144vw`];
+
+    let poster = 0;
+    for(let i = 0; i < 5 ; i ++) {
+      for (let j = 0; j < 4; j++) {
+        BackgroundImgs.push(`no-repeat ${horizontal[j]} ${vertical[i]} / 25% fixed url("http://image.tmdb.org/t/p/w500/${LatestMoviesImages[poster]}")`)
+        poster++;
       }
     }
 
