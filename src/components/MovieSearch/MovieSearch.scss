@@ -1,14 +1,22 @@
 @import "../../_variables.scss";
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
 //--------------------general--------------------
 .home__title {
     color: #e6e6e6;
-    font-weight: 600;
+    font-family: 'Orbitron', sans-serif;
     font-size: 4.5rem;
+    font-weight: 600;
     margin: 0;
     padding: 10% 0;
     text-align: center;
     text-shadow: 3px 5px 10px black;
     transition: .3s ease-in-out;
+}
+@media (max-width: 768px) {
+    .home__title {
+        font-size: 2.4rem;
+    }
 }
 
 h1.search-active {
@@ -28,7 +36,7 @@ h1.search-active {
     padding: 20px 0;
     top: 0;
     transition: transform .4s ease-in-out;
-    width: 100%;
+    width: 96%;
     .searchBar {
         display: flex;
         flex-wrap: wrap;

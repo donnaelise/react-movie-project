@@ -6,6 +6,7 @@ import { H1, H2 } from '../ui-library/Headings'
 import MediaResultCard from "../MediaResultCard";
 import MediaTypeFilter from "../MediaTypeFilter/MediaTypeFilter";
 
+
 function MovieSearch () {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState(null);
@@ -87,7 +88,7 @@ function MovieSearch () {
   }
   return (
       <React.Fragment>
-        <h1 className={'home__title' + (inputFocus ? ' search-active' : '')}>Movie Database</h1>
+        <h1 className={'home__title' + (inputFocus ? ' search-active' : '')}>Cinematheque</h1>
         <form className={'searchForm' + (inputFocus ? ' search-active' : '') }>
           <div className={'searchBar'}>
             <div className={'searchInput'}>
