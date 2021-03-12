@@ -42,7 +42,35 @@ h1.search-active {
         cursor: pointer;
         flex-basis: 30%;
         float: right;
+
+        
     }
+    @media (max-width: 768px) {
+        .searchInput {
+            flex-basis: 80%;
+        }
+        .button-search {
+            font-size: 1.4rem;
+            flex-basis: 15%;
+            padding: 0px;
+        }
+        .button-search-text {
+            display: none;
+        }
+
+        .checkmark {
+            height: 24px;
+            width: 24px;
+        }
+
+        .filterLabel input:checked~.checkmark:after {
+            animation: createBox .2s forwards ease-out;
+            display: block;
+            height: 12px;
+            width: 12px;
+        }
+    }
+
     //--------------------radio buttons--------------------
     #filterSearch {
         display: flex;
@@ -53,7 +81,7 @@ h1.search-active {
             cursor: pointer;
             color: black;
             display: block;
-            font-size: 22px;
+            font-size: 19px;
             margin-bottom: 12px;
             position: relative;
         }
@@ -73,6 +101,7 @@ h1.search-active {
             position: absolute;
             width: 28px;
         }
+        
         .filterLabel:hover input~.checkmark {
             background-color: #ccc;
         }
@@ -160,7 +189,7 @@ h1.search-active {
 }
 
 .searchInput {
-    margin: 5px auto;
+    margin: 4px auto;
     border-radius: 5px;
     background-color: white;
     display: flex;

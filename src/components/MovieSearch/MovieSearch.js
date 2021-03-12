@@ -107,7 +107,7 @@ function MovieSearch () {
               </div>
               <a className={'resetInput'} onClick={handleClearSearch}><span className={'icon-x'}> </span> </a>
             </div>
-            <button className={'button button-search'} onClick={handleClick}><span className="icon-search"> </span>Search</button>
+            <button className={'button button-search'} onClick={handleClick}><span className="icon-search"> </span><span class="button-search-text">Search</span></button>
           </div>
           <MediaTypeFilter options={filterOptions} onChange={handleRadioChange} currentSelection={searchFilter}/>
         </form>
