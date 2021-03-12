@@ -97,6 +97,7 @@ function MovieSearch () {
                        className={'searchFormInput'}
                        type="text"
                        value={query}
+                       autoComplete="off"
                        onFocus={()=>handleInputFocus(true)}
                        onBlur={()=>handleInputFocus(false)}
                        onChange={e=>handleChange(e)}

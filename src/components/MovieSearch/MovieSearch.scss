@@ -121,6 +121,10 @@ h1.search-active {
 .searchForm.search-active {
     padding: 0;
     transition: .3s ease-in-out;
+
+    .searchBar {
+        padding: 10px 10px 10px 0;
+    }
 }
 
 //--------------------search bar--------------------
@@ -199,6 +203,7 @@ h1.search-active {
     flex-wrap: wrap;
     justify-content: center;
     margin: 0 auto;
+    margin-top: 10px;
     max-width: 800px;
     overflow: scroll;
     padding-top: 10px;
